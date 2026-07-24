@@ -1,0 +1,240 @@
+/* Section - Use Case */
+
+.section {
+  font-family: var(--pc-font-body);
+  background: var(--pc-bg);
+  padding: var(--sec-padding);
+  border-top: 1px solid var(--pc-border);
+}
+
+.inner {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.eyebrow {
+  font-family: var(--pc-font-head);
+  font-size: var(-fs-title-eye);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--pc-emerald);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  color: var(--pc-gold);
+  line-height: 1.1;
+  margin: 0 0 14px;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--pc-gold) 0%, transparent 100%);
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-title-sub);
+  color: var(--pc-text-dim);
+  line-height: 1.75;
+  max-width: 60%;
+  margin: 0;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--pc-border);
+  margin-bottom: 1px;
+}
+
+.bannerImg {
+  border-right: 1px solid var(--pc-border);
+  overflow: hidden;
+  object-fit: cover;
+  min-height: 250px;
+}
+
+.bannerInfo {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  background: var(--pc-bg2);
+}
+
+.bannerQuote {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-quote-lg);
+  font-weight: 700;
+  color: var(--pc-gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.bannerDesc {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-card-des);
+  color: var(--pc-text-dim);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-family: var(--pc-font-mono);
+  font-size: var(--fs-chip);
+  color: var(--pc-gold-dim);
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid var(--pc-border);
+  padding: 3px 10px;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid var(--pc-border);
+  border-top: none;
+  background: var(--pc-border);
+}
+
+.card {
+  background: var(--pc-bg);
+  padding: 20px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background 0.18s;
+}
+.card:hover {
+  background: var(--pc-bg2);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.cardImg {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid var(--pc-border);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+
+.cardNum {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-card-nmbr);
+  letter-spacing: 0.22em;
+  color: var(--pc-emerald-lt);
+  display: block;
+}
+
+.cardTitle {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-card-title);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pc-gold);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-card-des);
+  color: var(--pc-text-dim);
+  line-height: 1.6;
+}
+
+.bulletIcon {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+
+/* Breakpoints */
+
+@media (max-width: 1100px) {
+  .subtitle {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .banner {
+    grid-template-columns: 1fr;
+  }
+  .bannerImg {
+    border-right: none;
+    border-bottom: 1px solid var(--pc-border);
+    min-height: 180px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .bannerInfo {
+    padding: 24px 20px;
+  }
+}
