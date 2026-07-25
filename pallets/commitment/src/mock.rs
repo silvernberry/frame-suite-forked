@@ -669,6 +669,7 @@ impl From<pallet_commitment::HoldReason> for HoldReason {
     fn from(reason: pallet_commitment::HoldReason) -> Self {
         match reason {
             crate::HoldReason::PrepareForCommit => HoldReason::PrepareForCommit,
+            crate::HoldReason::__Ignore(_) => unreachable!("composite enum __Ignore should never be constructed")
         }
     }
 }
@@ -677,6 +678,7 @@ impl From<pallet_commitment::FreezeReason> for FreezeReason {
     fn from(reason: pallet_commitment::FreezeReason) -> Self {
         match reason {
             crate::FreezeReason::BenchTestReason => FreezeReason::Benchmarks,
+            crate::FreezeReason::__Ignore(_) => unreachable!("composite enum __Ignore should never be constructed")
         }
     }
 }
