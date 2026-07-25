@@ -1,5 +1,12 @@
 # Pallet Commitment
 
+[![Homepage](https://img.shields.io/badge/Homepage-Visit_Site-2563EB?style=flat-square&logo=rocket&logoColor=white)](https://auguth.github.io/frame-suite/pallet-commitment/)
+[![Docs Site](https://img.shields.io/badge/Docs-Read_the_Docs-16A34A?style=flat-square&logo=readthedocs&logoColor=white)](https://auguth.github.io/frame-suite/pallet-commitment/docs/)
+[![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-F59E0B?style=flat-square&logo=opensourceinitiative&logoColor=white)](https://opensource.org/license/MPL-2.0)
+[![Crates.io](https://img.shields.io/crates/v/pallet-commitment?style=flat-square&color=F97316)](https://crates.io/crates/pallet-commitment)
+[![Docs.rs](https://img.shields.io/badge/Docs-docs.rs-7C3AED?style=flat-square&logo=docsdotrs&logoColor=white)](https://docs.rs/pallet-commitment)
+[![Substrate Framework](https://img.shields.io/badge/Substrate-Framework-E6007A?style=flat-square&logo=polkadot&logoColor=white)](https://github.com/paritytech/polkadot-sdk)
+
 A **reusable fungible bonding primitive** for runtimes that need to express **structured commitments over assets**.
 
 This pallet provides a **generic commitment layer** where assets are bonded under a `(reason, digest)` pair, enabling multiple pallets to share and reuse the same bonding infrastructure.
