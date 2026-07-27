@@ -35,6 +35,7 @@ use frame_suite::{
     misc::{Disposition, Ignore},
     plugin_context,
     xp::XpMutate,
+    Commitment as CommitmentTrait
 };
 
 // --- FRAME Support ---
@@ -526,12 +527,18 @@ pub fn initiate_digest_with_default_balance(
 }
 
 /// Prepares an index from entries and stores it under the given identifier.
+/// Initiate digest with default balance if the entry digest is not initiated before.
 pub fn prepare_and_initiate_index(
     who: AccountId,
     reason: FreezeReason,
     entries: &[(AccountId, Shares)], //(entry_digest, shares)
     index_digest: AccountId,
 ) -> DispatchResult {
+    for (entry, _) in entries{
+        if Pallet::digest_exists(&reason, &entry).is_err() {
+            initiate_digest_with_default_balance(reason, entry.clone())?;
+        }
+    }
     let index = Pallet::prepare_index(&who, &reason, entries)?;
     Pallet::set_index(&who, &reason, &index, &index_digest)?;
     Ok(())
