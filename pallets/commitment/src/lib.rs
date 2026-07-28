@@ -1186,6 +1186,15 @@ pub mod pallet {
         /// raising (deposit) limits by the underlying Lazy Balance Plugin Family
         /// for the current operation.
         RaisingOffLimits,
+
+        /// An entry digest provided to an index was never initiated (not present
+        /// in `DigestMap` under the given reason) at the time the index was
+        /// constructed or the entry was added.
+        EntryDigestNotInitiated,
+
+        /// A slot digest provided to a pool was never initiated (not present
+        /// in `DigestMap` under the given reason) at the time the slot was added.
+        SlotDigestNotInitiated,
     }
 
     // ===============================================================================

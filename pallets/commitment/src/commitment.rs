@@ -1120,6 +1120,14 @@ impl<T: Config<I>, I: 'static> CommitIndex<Proprietor<T>> for Pallet<T, I> {
     ///
     /// Entries with zero shares are silently ignored, as they carry no
     /// semantic contribution to the index.
+    /// 
+    /// Each entry digest must already be initiated (present in [`DigestMap`]
+    /// under `reason`) before it can be added here, or it's rejected with
+    /// `DigestNotFound` up front rather than failing later at commit-time.
+    ///
+    /// Future work: allow uninitiated digests and defer their initiation to 
+    /// first deposit via the index, as [`CommitDeposit::place_digest_commit`]
+    /// does for direct commitments today.
     ///
     /// Entry digests are not validated to be direct digests. If a commitment
     /// is placed on the index, each entry digest will be funded accordingly
@@ -1138,7 +1146,7 @@ impl<T: Config<I>, I: 'static> CommitIndex<Proprietor<T>> for Pallet<T, I> {
     /// - `Err(DispatchError)` if preparation fails
     fn prepare_index(
         _who: &Proprietor<T>,
-        _reason: &Self::Reason,
+        reason: &Self::Reason,
         entries: &[(Self::Digest, Self::Shares)],
     ) -> Result<Self::Index, DispatchError> {
         // Initialize a new Entries collection for the index
@@ -1148,6 +1156,11 @@ impl<T: Config<I>, I: 'static> CommitIndex<Proprietor<T>> for Pallet<T, I> {
             if shares.is_zero() {
                 continue;
             }
+            // Reject uninitiated digests early instead of failing later at commit-time
+            ensure!(
+                DigestMap::<T, I>::contains_key((reason, &digest)),
+                Error::<T,I>::EntryDigestNotInitiated
+            );
             // Create a new entry with the given variant
             let entry_info = EntryInfo::<T, I>::new(digest.clone(), *shares, Default::default())?;
             // Add entry to the index, checking for maximum capacity
@@ -1202,6 +1215,10 @@ impl<T: Config<I>, I: 'static> CommitIndex<Proprietor<T>> for Pallet<T, I> {
     ///   - If `shares` is zero, the operation is a no-op and the original index is returned.
     ///   - Otherwise, a new entry is added with the default [`Config::Position`] variant.
     ///
+    /// A newly added entry digest must already be initiated (present in [`DigestMap`]
+    /// under `reason`), or it's rejected with `DigestNotFound` up front rather than
+    /// failing later at commit-time.
+    /// 
     /// The newly added entry digest is not validated to be a direct digest and is
     /// accepted as provided through this function. If a commitment is placed on the
     /// index, it will be funded accordingly through normal deposit routing.
@@ -1238,6 +1255,11 @@ impl<T: Config<I>, I: 'static> CommitIndex<Proprietor<T>> for Pallet<T, I> {
                 if shares.is_zero() {
                     return Ok(index_of.clone());
                 }
+                // Reject uninitiated digests early instead of failing later at commit-time
+                ensure!(
+                    DigestMap::<T, I>::contains_key((reason, &entry_of)),
+                    Error::<T,I>::EntryDigestNotInitiated
+                );
                 CommitHelpers::<T, I>::set_index_entry(
                     who,
                     reason,
@@ -1741,6 +1763,10 @@ impl<T: Config<I>, I: 'static> CommitPool<Proprietor<T>> for Pallet<T, I> {
     /// - A zero share value removes the slot from the pool.
     /// - A non-zero share value updates the slot's shares while keeping its variant.
     ///
+    /// A newly added slot digest must already be initiated (present in [`DigestMap`]
+    /// under `reason`), or it's rejected with `DigestNotFound` up front rather than
+    /// failing later at commit-time.
+    /// 
     /// Nested cases-such as pool slots referencing other pools or indexes
     /// are not supported and may be treated as new direct digests when routed
     /// through [`CommitDeposit::deposit_to_digest`]. Callers are responsible for
@@ -1783,6 +1809,11 @@ impl<T: Config<I>, I: 'static> CommitPool<Proprietor<T>> for Pallet<T, I> {
                 if shares.is_zero() {
                     return Ok(());
                 }
+                // Reject uninitiated digests early instead of failing later at commit-time
+                ensure!(
+                    DigestMap::<T, I>::contains_key((reason, &slot_of)),
+                    Error::<T,I>::SlotDigestNotInitiated
+                );
                 CommitHelpers::<T, I>::set_pool_slot(
                     who,
                     reason,
@@ -2417,6 +2448,14 @@ impl<T: Config<I>, I: 'static> IndexVariant<Proprietor<T>> for Pallet<T, I> {
     ///
     /// Entries with zero shares are silently ignored, as they carry no
     /// semantic contribution to the index.
+    /// 
+    /// Each entry digest must already be initiated (present in [`DigestMap`]
+    /// under `reason`) before it can be added here, or it's rejected with
+    /// `DigestNotFound` up front rather than failing later at commit-time.
+    ///
+    /// Future work: allow uninitiated digests and defer their initiation to 
+    /// first deposit via the index, as [`CommitDeposit::place_digest_commit`]
+    /// does for direct commitments today.
     ///
     /// - `who`: The proprietor creating the index.
     /// - `reason`: The reason under which the index is being prepared (not used internally).
@@ -2430,7 +2469,7 @@ impl<T: Config<I>, I: 'static> IndexVariant<Proprietor<T>> for Pallet<T, I> {
     /// - `Err(DispatchError)` if preparation fails
     fn prepare_index_of_variants(
         _who: &Proprietor<T>,
-        _reason: &Self::Reason,
+        reason: &Self::Reason,
         entries: Vec<(Self::Digest, Self::Shares, Self::Position)>,
     ) -> Result<Self::Index, DispatchError> {
         // Initialize a new Entries collection for the index
@@ -2440,6 +2479,11 @@ impl<T: Config<I>, I: 'static> IndexVariant<Proprietor<T>> for Pallet<T, I> {
             if shares.is_zero() {
                 continue;
             }
+            // Reject uninitiated digests early instead of failing later at commit-time
+            ensure!(
+                DigestMap::<T, I>::contains_key((reason, &digest)),
+                Error::<T,I>::EntryDigestNotInitiated
+            );
             // Create a new entry with the given variant
             let entry_info = EntryInfo::<T, I>::new(digest, shares, variant)?;
             // Add entry to the index, checking for maximum capacity
@@ -2513,6 +2557,10 @@ impl<T: Config<I>, I: 'static> IndexVariant<Proprietor<T>> for Pallet<T, I> {
     ///   - If `shares` is `Some(zero)` or `None`, the operation is a no-op and the original index is returned.
     ///   - Otherwise, a new entry is added with the provided variant and shares.
     ///
+    /// A newly added entry digest must already be initiated (present in [`DigestMap`]
+    /// under `reason`), or it's rejected with `DigestNotFound` up front rather than
+    /// failing later at commit-time.
+    /// 
     /// The entry digest is not validated to be a direct digest and is accepted as provided.
     /// If a commitment is placed on the index, the entry will be funded through normal deposit routing.
     ///
@@ -2579,6 +2627,11 @@ impl<T: Config<I>, I: 'static> IndexVariant<Proprietor<T>> for Pallet<T, I> {
                     if s.is_zero() {
                         return Ok(index_of.clone());
                     }
+                    // Reject uninitiated digests early instead of failing later at commit-time
+                    ensure!(
+                        DigestMap::<T, I>::contains_key((reason, &entry_of)),
+                        Error::<T,I>::EntryDigestNotInitiated
+                    );
                     CommitHelpers::<T, I>::set_index_entry(
                         who, reason, index_of, entry_of, s, &variant,
                     )
@@ -2665,6 +2718,10 @@ impl<T: Config<I>, I: 'static> PoolVariant<Proprietor<T>> for Pallet<T, I> {
     ///   - Does nothing if `shares` is zero.
     ///   - Returns an error if `shares` is `None` (no slot to update and no data to create).
     ///
+    /// A newly added slot digest must already be initiated (present in [`DigestMap`]
+    /// under `reason`), or it's rejected with `DigestNotFound` up front rather than
+    /// failing later at commit-time.
+    /// 
     /// ## Returns
     /// - `Ok(())` if the operation completes successfully
     /// - `Err(DispatchError)` if the slot is not found and cannot be created,
@@ -2721,6 +2778,11 @@ impl<T: Config<I>, I: 'static> PoolVariant<Proprietor<T>> for Pallet<T, I> {
                     if shares.is_zero() {
                         return Ok(());
                     }
+                    // Reject uninitiated digests early instead of failing later at commit-time
+                    ensure!(
+                        DigestMap::<T, I>::contains_key((reason, &slot_of)),
+                        Error::<T,I>::SlotDigestNotInitiated
+                    );
                     CommitHelpers::<T, I>::set_pool_slot(
                         who, reason, pool_of, slot_of, shares, &variant,
                     )
@@ -2825,6 +2887,8 @@ mod tests {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // ```````````````````````````````````` IMPORTS ``````````````````````````````````
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    use std::vec;
 
     // --- Local crate imports ---
     use crate::{balance::*, mock::*};
@@ -7019,6 +7083,22 @@ mod tests {
     }
 
     #[test]
+    fn prepare_index_rejects_uninitiated_digest() {
+        commit_test_ext().execute_with(||{
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            let entries = vec![(VALIDATOR_ALPHA, 100), (VALIDATOR_BETA, 200)];
+            assert_err!(
+                Pallet::prepare_index(
+                    &ALICE,
+                    &STAKING,
+                    &entries
+                ),
+                Error::EntryDigestNotInitiated
+            );
+        })
+    }
+
+    #[test]
     fn set_index_ok() {
         commit_test_ext().execute_with(|| {
             System::set_block_number(10);
@@ -7344,6 +7424,42 @@ mod tests {
     }
 
     #[test]
+    fn set_entry_shares_err_entry_digest_not_initiated() {
+        commit_test_ext().execute_with(|| {
+            set_default_user_balance_and_standard_hold(ALICE).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
+            prepare_and_initiate_index(
+                ALICE,
+                STAKING,
+                &[
+                    (VALIDATOR_ALPHA, SHARE_EQUAL),
+                    (VALIDATOR_BETA, SHARE_EQUAL),
+                ],
+                INDEX_BALANCED_STAKING,
+            )
+            .unwrap();
+            Pallet::place_commit(
+                &ALICE,
+                &STAKING,
+                &INDEX_BALANCED_STAKING,
+                STANDARD_COMMIT,
+                &Directive::new(Precision::BestEffort, Fortitude::Polite),
+            )
+            .unwrap();
+            assert_ok!(Pallet::index_exists(&STAKING, &INDEX_BALANCED_STAKING));
+            // trying to insert uninitiated digest will return error
+            assert_err!(Pallet::set_entry_shares(
+                &ALICE,
+                &STAKING,
+                &INDEX_BALANCED_STAKING,
+                &VALIDATOR_GAMMA,
+                SHARE_MAJOR,
+            ), Error::EntryDigestNotInitiated);
+        })
+    }
+
+    #[test]
     fn reap_index_ok() {
         commit_test_ext().execute_with(|| {
             System::set_block_number(10);
@@ -7409,6 +7525,8 @@ mod tests {
     fn gen_index_digest_success() {
         commit_test_ext().execute_with(|| {
             set_default_user_balance_and_standard_hold(ALICE).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
             let index_a = Pallet::prepare_index(
                 &ALICE,
                 &STAKING,
@@ -7450,6 +7568,8 @@ mod tests {
     fn on_create_index_event_emmision_success() {
         commit_test_ext().execute_with(|| {
             System::set_block_number(2);
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
             let entries = vec![
                 (VALIDATOR_ALPHA, SHARE_MAJOR),
                 (VALIDATOR_BETA, SHARE_DOMINANT),
@@ -7477,6 +7597,8 @@ mod tests {
     fn on_reap_index_event_emmision_success() {
         commit_test_ext().execute_with(|| {
             System::set_block_number(2);
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
             let entries = vec![
                 (VALIDATOR_ALPHA, SHARE_MAJOR),
                 (VALIDATOR_BETA, SHARE_DOMINANT),
@@ -7900,6 +8022,43 @@ mod tests {
     }
 
     #[test]
+    fn set_entry_of_variant_err_entry_digest_not_initiated() {
+        commit_test_ext().execute_with(|| {
+            set_default_user_balance_and_standard_hold(ALICE).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
+            prepare_and_initiate_index(
+                ALICE,
+                STAKING,
+                &[
+                    (VALIDATOR_ALPHA, SHARE_EQUAL),
+                    (VALIDATOR_BETA, SHARE_EQUAL),
+                ],
+                INDEX_BALANCED_STAKING,
+            )
+            .unwrap();
+            Pallet::place_commit(
+                &ALICE,
+                &STAKING,
+                &INDEX_BALANCED_STAKING,
+                STANDARD_COMMIT,
+                &Directive::new(Precision::BestEffort, Fortitude::Polite),
+            )
+            .unwrap();
+            let new_variant = Position::position_of(2).unwrap();
+            // trying to insert uninitiated digest will return error
+            assert_err!(Pallet::set_entry_of_variant(
+                &ALICE,
+                &STAKING,
+                &INDEX_BALANCED_STAKING,
+                &VALIDATOR_GAMMA,
+                new_variant,
+                Some(SHARE_MAJOR),
+            ), Error::EntryDigestNotInitiated);
+        })
+    }
+
+    #[test]
     fn prepare_index_of_variants_success() {
         commit_test_ext().execute_with(|| {
             initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
@@ -7980,6 +8139,25 @@ mod tests {
             .unwrap_err();
             // since MaxEntries is set to 3, adding a fourth entry results in err
             assert_eq!(actual_err, Error::MaxEntriesReached.into());
+        })
+    }
+
+    #[test]
+    fn prepare_index_of_variants_rejects_uninitiated_digest() {
+        commit_test_ext().execute_with(||{
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            let entries = vec![
+                (VALIDATOR_ALPHA, 100, Position::default()), 
+                (VALIDATOR_BETA, 200, Position::default())
+            ];
+            assert_err!(
+                Pallet::prepare_index_of_variants(
+                    &ALICE,
+                    &STAKING,
+                    entries
+                ),
+                Error::EntryDigestNotInitiated
+            );
         })
     }
 
@@ -8525,6 +8703,37 @@ mod tests {
             let actual_slots_shares =
                 Pallet::get_slots_shares(&STAKING, &POOL_MANAGED_STAKING).unwrap();
             assert_eq!(actual_slots_shares, expected_slots_shares)
+        })
+    }
+
+    #[test]
+    fn set_slot_shares_err_slot_digest_not_initiated() {
+        commit_test_ext().execute_with(|| {
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
+
+            let entries = vec![
+                (VALIDATOR_ALPHA, SHARE_EQUAL),
+                (VALIDATOR_BETA, SHARE_EQUAL),
+            ];
+            prepare_and_initiate_pool(
+                MIKE,
+                STAKING,
+                &entries,
+                INDEX_BALANCED_STAKING,
+                POOL_MANAGED_STAKING,
+                COMMISSION_LOW,
+            )
+            .unwrap();
+
+            // tryign to add uninitiated digest returns error
+            assert_err!(Pallet::set_slot_shares(
+                &MIKE,
+                &STAKING,
+                &POOL_MANAGED_STAKING,
+                &VALIDATOR_GAMMA,
+                SHARE_EQUAL
+            ), Error::SlotDigestNotInitiated);
         })
     }
 
@@ -9605,6 +9814,7 @@ mod tests {
                     COMMISSION_LOW,
                 )
                 .unwrap();
+                initiate_digest_with_default_balance(STAKING,VALIDATOR_GAMMA).unwrap();
                 Pallet::set_slot_of_variant(
                     &ALICE,
                     &STAKING,
@@ -9646,6 +9856,37 @@ mod tests {
                     Some(0),
                 ));
             })
+        })
+    }
+
+    #[test]
+    fn set_slot_of_variant_err_slot_digest_not_initiated() {
+        commit_test_ext().execute_with(|| {
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_ALPHA).unwrap();
+            initiate_digest_with_default_balance(STAKING, VALIDATOR_BETA).unwrap();
+
+            let entries = vec![
+                (VALIDATOR_ALPHA, SHARE_EQUAL),
+                (VALIDATOR_BETA, SHARE_EQUAL),
+            ];
+            prepare_and_initiate_pool(
+                MIKE,
+                STAKING,
+                &entries,
+                INDEX_BALANCED_STAKING,
+                POOL_MANAGED_STAKING,
+                COMMISSION_LOW,
+            )
+            .unwrap();
+            // tryign to add uninitiated digest returns error
+            assert_err!(Pallet::set_slot_of_variant(
+                &ALICE,
+                &STAKING,
+                &POOL_MANAGED_STAKING,
+                &VALIDATOR_GAMMA,
+                Position::position_of(1).unwrap(),
+                Some(SHARE_EQUAL),
+            ), Error::SlotDigestNotInitiated);
         })
     }
 
