@@ -314,10 +314,10 @@ pub mod pallet {
         /// Hold reason type for locking assets.
         ///
         /// Utilized to provide a native hold reason for all commitments.
-        type AssetHold: From<HoldReason> + RuntimeEnum + Delimited + Copy + VariantCount;
+        type AssetHold: From<HoldReason<I>> + RuntimeEnum + Delimited + Copy + VariantCount;
 
         /// Freeze reason type for commitment-specific freezes.
-        type AssetFreeze: From<FreezeReason> + RuntimeEnum + Delimited + Copy + VariantCount;
+        type AssetFreeze: From<FreezeReason<I>> + RuntimeEnum + Delimited + Copy + VariantCount;
 
         // --- Scalars ---
 
@@ -547,7 +547,7 @@ pub mod pallet {
 
     #[pallet::composite_enum]
     /// Commitment pallet `HoldReason`, merged into the runtime composite enum.
-    pub enum HoldReason {
+    pub enum HoldReason<I: 'static = ()> {
         /// Native hold reason used by the Commitment pallet.
         ///
         /// Assets held under this reason act as a **pre-reserved balance** from which
@@ -562,7 +562,7 @@ pub mod pallet {
 
     #[pallet::composite_enum]
     /// Commitment pallet `FreezeReason`, merged into the runtime composite enum.
-    pub enum FreezeReason {
+    pub enum FreezeReason<I: 'static = ()> {
         /// Placeholder freeze reason used exclusively for benchmarking.
         ///
         /// Consumer pallets typically define their own bounded freeze-reason enums
