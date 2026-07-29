@@ -59,7 +59,7 @@ Typical examples include:
 
 ### Recommended Reading
 
-- 📦 [Installation](./getting-started/install)
+- 📦 [Installation](./getting-started/installation)
 - ⚙️ [Configuration](./getting-started/config)
 - 🔒 [Integrating Commitments](./getting-started/integrate)
 - 🧺 [Integrating Indexes](./getting-started/index)

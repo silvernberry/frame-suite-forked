@@ -65,7 +65,7 @@ Even if many users commit to the *same digest*, each commitment still belongs to
 
 The **Reason** tells the runtime what kind of commitment this is.
 
-This is usually a runtime [composite enum](../getting-started/install.md#-3-register-the-pallet-in-runtime) such as:
+This is usually a runtime [composite enum](../getting-started/installation.md#-3-register-the-pallet-in-runtime) such as:
 
 ```rust
 RuntimeFreezeReason

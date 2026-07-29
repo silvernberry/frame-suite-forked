@@ -252,4 +252,4 @@ Resolution = lazy final settlement
 
 Now we move into integrating/installing pallet-commitment towards a runtime where the usage pallet exists to be served.
 
-👉 **Getting Started -> [Installation](../getting-started/install.md)**
+👉 **Getting Started -> [Installation](../getting-started/installation.md)**
