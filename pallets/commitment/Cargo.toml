@@ -1,10 +1,11 @@
 [package]
 name = "pallet-commitment"
 version = "0.1.1"
-description = "A reusable, fungible commitment and bonding primitive with support for structured, indexed, and pooled value allocations"
+description = "A FRAME pallet for reusable, abstract bonding primitives with structured, indexed, and pooled value allocations."
 readme = "README.md"
 keywords = ["substrate", "frame", "polkadot", "staking", "bonding"]
-documentation = "https://auguth.github.io/frame-suite/rust-doc/pallet_commitment/index.html"
+homepage = "https://auguth.github.io/frame-suite/pallet-commitment"
+documentation = "https://auguth.github.io/frame-suite/rust-doc/pallet_commitment/"
 
 license.workspace = true
 authors.workspace = true

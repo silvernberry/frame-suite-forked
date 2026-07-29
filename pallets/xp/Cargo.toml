@@ -5,7 +5,7 @@ description = "A FRAME pallet for programmable XP (Experience Points) and reputa
 readme = "README.md"
 keywords = ["substrate", "frame", "polkadot", "fungible", "non-fungible"]
 homepage = "https://auguth.github.io/frame-suite/pallet-xp"
-documentation = "https://auguth.github.io/frame-suite/rust-doc/pallet_xp/index.html"
+documentation = "https://auguth.github.io/frame-suite/rust-doc/pallet_xp/"
 
 license.workspace = true
 authors.workspace = true
