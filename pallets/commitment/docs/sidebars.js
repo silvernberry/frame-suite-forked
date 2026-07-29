@@ -37,7 +37,7 @@ module.exports = {
         "getting-started/installation",
         "getting-started/config",
         "getting-started/integrate",
-        "getting-started/index",
+        "getting-started/indexes",
         "getting-started/pool",
       ],
     },

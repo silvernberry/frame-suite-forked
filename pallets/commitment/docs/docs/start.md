@@ -62,7 +62,7 @@ Typical examples include:
 - 📦 [Installation](./getting-started/installation)
 - ⚙️ [Configuration](./getting-started/config)
 - 🔒 [Integrating Commitments](./getting-started/integrate)
-- 🧺 [Integrating Indexes](./getting-started/index)
+- 🧺 [Integrating Indexes](./getting-started/indexes)
 - 🏊 [Integrating Pools](./getting-started/pool)
 - 🔄 [Operations](./core/operations)
 - 🧪 [Testing](./advanced/tests)

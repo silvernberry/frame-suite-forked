@@ -46,7 +46,7 @@ all pool operations become available through the same adapter.
 
 Pools are created from existing indexes.
 
-First prepare and register an index exactly as described in the [previous section](./index.md).
+First prepare and register an index exactly as described in the [previous section](./indexes.md).
 
 ```text
 Index -> Pool

@@ -525,4 +525,4 @@ Now that direct commitments, variants, digest mutation, and resolution are compl
 
 This is where one commitment can safely control multiple underlying digests through weighted distribution.
 
-👉 **Usage -> [Integrating Indexes](./index.md)**
+👉 **Usage -> [Integrating Indexes](./indexes.md)**
