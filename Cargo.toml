@@ -61,8 +61,8 @@ zero-prefixed-literal = { level = "allow", priority = 2 }            # 00_1000_0
 frame-suite-runtime = { path = "./runtime", default-features = false }
 frame-suite = { path = "./frame/suite", version = "0.1.1", default-features = false }
 frame-plugins = { path = "./frame/plugins", version = "0.1.1", default-features = false }
-pallet-xp = { path = "./pallets/xp", version = "0.1.1", default-features = false }
-pallet-commitment = { path = "./pallets/commitment", version = "0.1.1", default-features = false }
+pallet-xp = { path = "./pallets/xp", version = "0.1.2", default-features = false }
+pallet-commitment = { path = "./pallets/commitment", version = "0.1.2", default-features = false }
 pallet-authors = { path = "./pallets/authors", version = "0.1.1", default-features = false }
 pallet-chain-manager = { path = "./pallets/chain-manager", version = "0.1.1", default-features = false }
 

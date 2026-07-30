@@ -1,6 +1,6 @@
 [package]
 name = "pallet-commitment"
-version = "0.1.1"
+version = "0.1.2"
 description = "A FRAME pallet for reusable, abstract bonding primitives with structured, indexed, and pooled value allocations."
 readme = "README.md"
 keywords = ["substrate", "frame", "polkadot", "staking", "bonding"]
