@@ -1,0 +1,140 @@
+/* Section - KeyFeatures */
+
+.section {
+  font-family: var(--pc-font-body);
+  background: var(--pc-bg);
+  padding: var(--sec-padding);;
+  border-top: 1px solid var(--pc-border);
+}
+
+.container {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.eyebrow {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-title-eye);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--pc-emerald);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  color: var(--pc-gold);
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--pc-gold) 0%, transparent 100%);
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-title-sub);
+  color: var(--pc-text-dim);
+  line-height: 1.75;
+  max-width: 60%;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  /* background: var(--pc-border); */
+}
+
+.card {
+  background: var(--pc-bg2, #161618);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s;
+}
+/* .card:hover {
+  background: var(--pc-bg3, #1c1c1f);
+} */
+
+.cardImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--pc-border);
+  flex-shrink: 0;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardBody {
+  padding: 20px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.cardTitle {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-card-title);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pc-gold);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-card-des);
+  color: var(--pc-text-dim);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Breakpoints */
+
+@media (max-width: 1100px) {
+  .subtitle {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .cardImage {
+    aspect-ratio: 16 / 9;
+  }
+  .header {
+    margin-bottom: 32px;
+  }
+}

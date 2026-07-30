@@ -1,0 +1,264 @@
+/* Section - Lifecycle */
+
+.section {
+  font-family: var(--pc-font-body);
+  background: var(--pc-bg);
+  padding: var(--sec-padding);
+  position: relative;
+  border-top: 1px solid var(--pc-border);
+}
+
+.inner {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  gap: var(--inner-gap);
+  display: flex;
+  flex-direction: column;
+}
+
+.titleRow {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  /* margin-bottom: clamp(40px, 6vw, 64px); */
+}
+
+.eyebrow {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-title-eye);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--pc-emerald);
+  display: block;
+}
+
+.h1 {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  color: var(--pc-gold);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--pc-gold) 0%, transparent 100%);
+}
+
+.subtitle {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-title-sub);
+  color: var(--pc-text-dim);
+  line-height: 1.75;
+  max-width: 60%;
+  margin: 0;
+}
+
+.titleRule {
+  height: 1px;
+  background: var(--pc-border);
+  width: 100%;
+  margin-top: 4px;
+}
+
+.bodyGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.lifecycle {
+  display: flex;
+  flex-direction: column;
+}
+
+.fStep {
+  display: grid;
+  grid-template-columns: 36px 1px 1fr;
+  gap: 0 18px;
+  align-items: start;
+  padding-top: 28px;
+}
+
+.fStepFirst {
+  padding-top: 0;
+}
+
+.fNum {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-card-nmbr);
+  font-weight: 700;
+  color: var(--pc-emerald-lt);
+  text-align: right;
+  padding-top: 4px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.fAccentVr {
+  background: var(--pc-border-em);
+  align-self: stretch;
+  opacity: 0.5;
+}
+
+.fBody {
+  padding: 0 0 28px;
+}
+
+.fStep:last-child .fBody {
+  padding-bottom: 0;
+}
+
+.fHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.fIconWrap {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pc-gold);
+}
+
+.stepIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.fName {
+  font-family: var(--pc-font-head);
+  font-size: var(--fs-card-title-md);
+  font-weight: 600;
+  color: var(--pc-gold);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.fDesc {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-card-des);
+  color: var(--pc-text-dim);
+  line-height: 1.7;
+  margin: 0 0 12px;
+  max-width: 560px;
+}
+
+.fnRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fn {
+  font-family: var(--pc-font-mono);
+  font-size: var(--fs-chip);
+  color: var(--pc-emerald-lt);
+  background: rgba(15, 139, 109, 0.08);
+  border: 1px solid rgba(15, 139, 109, 0.22);
+  padding: 3px 10px;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+.fnInline {
+  font-family: var(--pc-font-mono);
+  font-size: 0.82em;
+  background: rgba(212, 175, 55, 0.07);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  padding: 0.1em 0.38em;
+  color: var(--pc-gold);
+  border-radius: 0;
+}
+
+.stepDivider {
+  height: 1px;
+  background: var(--pc-border);
+  grid-column: 1 / 4;
+}
+
+.cardsCol {
+  position: sticky;
+  top: 85px;
+  max-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mascotCard {
+  background: var(--pc-bg2, #161618);
+  /* border: 1px solid var(--pc-border-em); */
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 9 / 14;
+}
+
+.cardFullImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Breakpoints */
+
+@media (max-width: 1100px) {
+  .subtitle {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 960px) {
+  .bodyGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cardsCol {
+    position: static;
+    max-height: none;
+  }
+
+  .mascotCard {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+
+  .fStep {
+    grid-template-columns: 28px 1px 1fr;
+    gap: 0 12px;
+    padding-top: 20px;
+  }
+
+  .fNum {
+    font-size: 11px;
+  }
+
+  .mascotCard {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .mascotCard {
+    aspect-ratio: 9 / 14;
+  }
+}

@@ -1,0 +1,128 @@
+/* Section - BridgeStrip */
+
+.section {
+  font-family: var(--pc-font-body);
+  background: var(--pc-bg2);
+  color: var(--pc-text);
+  padding: 56px clamp(1.25rem, 5vw, 80px);
+  border-top: 1px solid var(--pc-border);
+  border-bottom: 1px solid var(--pc-border);
+}
+
+.inner {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.taglineBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.tagline {
+  font-family: var(--pc-font-head);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pc-gold);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sub {
+  font-family: var(--pc-font-body);
+  font-size: var(--fs-quote-sm);
+  color: var(--pc-text-dim);
+  font-style: italic;
+  margin: 0;
+}
+
+.marqueeWrapper {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  animation: pcMarquee 32s linear infinite;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes pcMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--pc-font-head);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-text-dim);
+  border: 1px solid var(--pc-border);
+  background: var(--pc-bg3);
+  padding: 9px 20px;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.pill:hover {
+  border-color: var(--pc-border-em);
+  color: var(--pc-gold);
+  background: var(--pc-bg2);
+}
+
+.pillIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--pc-gold-dark);
+  transition: color 0.2s;
+}
+
+.pill:hover .pillIcon {
+  color: var(--pc-gold);
+}
+
+/* Breakpoints */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 20px;
+  }
+  .tagline {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+}
