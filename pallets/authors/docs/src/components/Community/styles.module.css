@@ -1,0 +1,172 @@
+/* Section - Community */
+
+.section {
+  font-family: var(--pa-font-body);
+  background: var(--pa-section-bg);
+  padding: var(--sec-padding);
+  border-top: 1px solid var(--pa-border);
+}
+
+.inner {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--pa-font-head);
+  font-size: var(--font-eyebrow-md);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pa-trust);
+  background: var(--pa-bg3);
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-bottom: var(--space-5);
+}
+
+.title {
+  font-family: var(--pa-font-head);
+  font-weight: 700;
+  font-size: var(--font-title-lg);
+  color: var(--pa-ink);
+  line-height: 1.15;
+  margin: 0 0 var(--space-4);
+}
+
+.accent {
+  color: var(--pa-trust);
+  display: block;
+}
+
+.desc {
+  font-family: var(--pa-font-body);
+  font-size: var(--font-desc-lg);
+  line-height: 1.6;
+  color: var(--pa-slate);
+  margin: 0 0 var(--space-8);
+  max-width: 55ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.card {
+  composes: card from '../shared/boxes.module.css';
+  box-shadow: var(--pa-shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  background-color: var(--pa-bg3);
+  text-decoration: none;
+}
+
+.badge {
+  composes: badgeMd from '../shared/boxes.module.css';
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, var(--badge-from), var(--badge-to));
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 10px -3px var(--badge-to);
+  margin-bottom: var(--space-4);
+}
+
+.badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cardTitle {
+  font-family: var(--pa-font-head);
+  font-weight: 700;
+  font-size: var(--font-desc-lg);
+  color: var(--pa-ink);
+  margin: 0 0 var(--space-2);
+}
+
+.cardDesc {
+  font-family: var(--pa-font-body);
+  font-size: var(--font-desc-xs);
+  line-height: 1.55;
+  color: var(--pa-slate);
+  margin: 0 0 var(--space-4);
+  flex: 1;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--pa-font-mono);
+  font-size: var(--font-card-helper);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pa-trust);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.cardLink svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Breakpoints */
+
+@media (max-width: 899.98px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 559.98px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .badge {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-bottom: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  .cardTitle {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0 0 2px;
+    font-size: var(--font-desc-md);
+  }
+
+  .cardDesc {
+    grid-column: 2;
+    grid-row: 2;
+    flex: none;
+    margin: 0;
+    font-size: var(--font-desc-xs);
+  }
+
+  .cardLink {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    font-size: 0;
+  }
+}

@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ---- Infima overrides ---- */
+  --ifm-color-primary: #0f6cbd;
+  --ifm-color-primary-dark: #0d5fa9;
+  --ifm-color-primary-darker: #0c599f;
+  --ifm-color-primary-darkest: #0a4a83;
+  --ifm-color-primary-light: #1379ce;
+  --ifm-color-primary-lighter: #1c81d3;
+  --ifm-color-primary-lightest: #3a96de;
+  --ifm-code-font-size: 90%;
+  --docusaurus-highlighted-code-line-bg: rgba(63, 157, 240, 0.15);
+
+  /* ---- Font stacks ---- */
+  --ifm-font-family-base: 'Segoe UI Variable Text', 'Segoe UI', -apple-system,
+    BlinkMacSystemFont, Inter, Roboto, sans-serif;
+  --ifm-heading-font-family: 'Segoe UI Variable Display', 'Segoe UI',
+    -apple-system, BlinkMacSystemFont, Inter, Roboto, sans-serif;
+  --ifm-font-family-monospace: 'Cascadia Code', 'Cascadia Mono', Consolas,
+    'Courier New', monospace;
+  --font-family: var(--ifm-font-family-base);
+
+  /* ---- Ifm layout ---- */
+  --ifm-navbar-height: 64px;
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f7fafe;
+  --ifm-font-color-base: #0b1220;
+  --ifm-font-color-secondary: #4b5768;
+  --ifm-link-color: #0f6cbd;
+  --ifm-link-hover-color: #0a3d91;
+  --ifm-heading-color: #0b1220;
+  --ifm-hr-border-color: rgba(15, 108, 189, 0.14);
+
+  /* ---- Sidebar ---- */
+  --ifm-sidebar-background: #ffffff;
+  --ifm-menu-color: #4b5768;
+  --ifm-menu-color-active: #0f6cbd;
+  --ifm-menu-color-background-active: rgba(15, 108, 189, 0.08);
+  --ifm-menu-color-background-hover: rgba(15, 108, 189, 0.04);
+  --ifm-toc-border-color: rgba(15, 108, 189, 0.14);
+  --ifm-toc-link-color: #8a94a6;
+
+  /* ---- Code blocks ---- */
+  --ifm-code-background: rgba(15, 108, 189, 0.05);
+  --ifm-pre-background: #0b1220;
+  --ifm-pre-border-radius: 10px;
+
+  /* ---- Tables ---- */
+  --ifm-table-border-color: rgba(15, 108, 189, 0.14);
+  --ifm-table-head-background: rgba(15, 108, 189, 0.05);
+  --ifm-table-stripe-background: rgba(15, 108, 189, 0.02);
+
+  scroll-padding-top: 80px;
+
+  /* ---- Shared spacing rhythm every section uses ---- */
+  --sec-padding: clamp(38px, 7vw, 76px) clamp(1.25rem, 5vw, 80px);
+  --inner-gap: clamp(28px, 4vw, 52px);
+
+  /* --- CUSTOM STYLES ---*/
+
+  --res-max-width: clamp(1500px, 85vw, 1850px);
+
+  /* ---- Fonts ---- */
+  --pa-font-head: 'Segoe UI Variable Display', 'Segoe UI', -apple-system,
+    BlinkMacSystemFont, Inter, Roboto, sans-serif;
+  --pa-font-body: 'Segoe UI Variable Text', 'Segoe UI', -apple-system,
+    BlinkMacSystemFont, Inter, Roboto, sans-serif;
+  --pa-font-mono: 'Cascadia Code', 'Cascadia Mono', Consolas, 'Courier New',
+    monospace;
+
+  /* Hero title */
+  --font-title-xl: clamp(2.375rem, 5vw, 4.5rem);
+  
+  /* Section title */
+  --font-title-lg: clamp(2rem, 4vw, 3.5rem);
+ 
+  /* Subsection title */
+  --font-title-md: clamp(1.5rem, 3vw, 2.5rem);
+  --font-title-md-2: clamp(1.5rem, 3vw, 2.2rem);
+
+  /* Card title */
+  --font-title-sm: clamp(1.25rem, 2vw, 1.75rem);
+    
+  --font-title-xs: clamp(1.15rem, 1.5vw, 1.5rem);
+
+  /* Hero description */
+  --font-desc-xl: clamp(1.125rem, 1.4vw, 1.5rem);
+
+  /* Section description */
+  --font-desc-lg: clamp(1rem, 1.2vw, 1.25rem);
+
+  /* Subsection description */
+  --font-desc-md: clamp(0.95rem, 1vw, 1.125rem);
+
+  /* Card description */
+  --font-desc-sm: clamp(0.875rem, 0.9vw, 1rem);
+
+  --font-desc-xs: clamp(0.75rem, 0.9vw, 0.95rem);
+
+  /* Hero eyebrow */
+  --font-eyebrow-xl: clamp(0.95rem, 1vw, 1.125rem);
+
+  /* Section eyebrow */
+  --font-eyebrow-lg: clamp(0.875rem, 0.9vw, 1rem);
+
+  /* Subsection eyebrow */
+  --font-eyebrow-md: clamp(0.8125rem, 0.8vw, 0.9375rem);
+
+  /* Card eyebrow */
+  --font-eyebrow-sm: clamp(0.75rem, 0.75vw, 0.875rem);
+  
+  --font-eyebrow-xs: clamp(0.5rem, 0.75vw, 0.75rem);
+
+  --font-card-key: clamp(0.8125rem, 0.75vw, 0.9375rem);
+  --font-card-title: clamp(1.25rem, 1.4vw, 1.5rem);
+  --font-card-title-sm: clamp(1.15rem, 1.2vw, 1.3rem);
+  --font-card-des: clamp(0.9375rem, 1vw, 1.0625rem);
+  --font-card-badge: clamp(0.875rem, 0.9vw, 1rem);
+  --font-card-helper: clamp(0.8125rem, 0.8vw, 0.9375rem);
+
+  --font-btn-xl: clamp(1rem, 1.1vw, 1.125rem);     /* 16–18px */
+  --font-btn-lg: clamp(0.9375rem, 1vw, 1rem);      /* 15–16px */
+  --font-btn-md: clamp(0.875rem, 0.9vw, 0.9375rem);/* 14–15px */
+  --font-btn-sm: clamp(0.8125rem, 0.8vw, 0.875rem);/* 13–14px */
+  --font-btn-xs: clamp(.74rem, .95vw, .9rem);
+  
+  /* ---- Brand colors ---- */
+  --pa-trust-deep: #0a3d91;
+  --pa-trust: #0f6cbd;
+  --pa-sky: #3f9df0;
+  --pa-ice: #eff6fc;
+  --pa-white: #ffffff;
+  --pa-ink: #0b1220;
+  --pa-slate: #4b5768;
+
+  /* ---- Text colors ---- */
+  --text-primary: var(--pa-ink);
+  --text-secondary: var(--pa-slate);
+  --text-highlight: var(--pa-trust);
+  --text-color-gradient: linear-gradient(
+    90deg,
+    #0f6cbd 0%,
+    #0b4f8b 49%,
+    #073257 100%
+  );
+
+  /* ---- Accent ---- */
+  --accent-primary: var(--pa-trust);
+  --accent-hover: var(--pa-trust-deep);
+  --accent-light: rgba(15, 108, 189, 0.12);
+
+  /* ---- Buttons ---- */
+  --button-primary: var(--pa-trust);
+  --button-hover: var(--pa-trust-deep);
+  --button-shadows: 0 6px 16px rgba(15, 108, 189, 0.22);
+  --button-hover-shadows: 0 8px 20px rgba(10, 61, 145, 0.28);
+
+  /* ---- Surfaces ---- */
+  --pa-bg: var(--pa-white);
+  --pa-bg2: #f7fafe;
+  --pa-bg3: #eff6fc;
+  --pa-bg4: #e4eefb;
+
+  /* ---- Borders ---- */
+  --pa-border: rgba(15, 108, 189, 0.12);
+  --pa-border-em: rgba(15, 108, 189, 0.32);
+
+  /* ---- Navbar type scale ---- */
+  --font-size-primary: 1.15rem;
+  --font-size-secondary: 1rem;
+  --font-size-context: 0.9rem;
+
+  /* ---- Hero type scale ---- */
+  --fs-hero-eye: clamp(0.8rem, 1.2vw, 0.95rem);
+  --fs-hero-title: clamp(2rem, 4.5vw, 4.8rem);
+  --fs-hero-des: clamp(0.95rem, 1.3vw, 1.1rem);
+
+  --fs-card-nmbr: clamp(0.8rem, 0.9vw, 0.85rem);
+  --fs-card-title: clamp(1.1rem, 1.2vw, 1.3rem);
+  --fs-card-des: clamp(0.85rem, 1vw, 1rem);
+
+  /* ---- Section title scale ---- */
+  --fs-title-eye: clamp(1rem, 1.2vw, 1.25rem);
+  --fs-title: clamp(1.6rem, 4vw, 2.4rem);
+  --fs-title-sm: clamp(1.2rem, 4vw, 1.6rem);
+  --fs-title-sub: clamp(1rem, 1.2vw, 1.2rem);
+
+  /* ---- Quote / callout scale ---- */
+  --fs-quote-lg: clamp(1.1rem, 2.5vw, 1.4rem);
+  --fs-quote-sm: clamp(0.85rem, 1.1vw, 1.1rem);
+
+  --hero-bg-prm: radial-gradient(
+      ellipse 60% 50% at 75% 10%,
+      rgba(63, 157, 240, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 20% 100%,
+      rgba(10, 61, 145, 0.1),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 50% 50%,
+      rgba(63, 157, 240, 0.05),
+      transparent 70%
+    ),
+    #eef2fc;
+
+  /* ---- Glass surface (frosted-glass cards) ---- */
+  --pa-glass-bg: rgba(255, 255, 255, 0.55);
+  --pa-glass-border: rgba(255, 255, 255, 0.6);
+  --pa-glass-blur: blur(16px) saturate(180%);
+  --pa-glass-shadow: 0 8px 32px rgba(11, 18, 32, 0.1);
+
+  /* ---- spacing scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+
+  /* ---- section background (see box #1 below re: scope) ---- */
+  --pa-section-bg: var(--pa-white);
+
+  /* ---- card radius scale ---- */
+  --pa-radius-sm: 12px;
+  --pa-radius-md: 16px;
+  --pa-radius-lg: 20px;
+
+  /* ---- card shadow scale ---- */
+  --pa-shadow-sm: 0 1px 2px rgba(10, 61, 145, 0.04),
+    0 8px 16px -8px rgba(10, 61, 145, 0.1);
+  --pa-shadow-md: 0 1px 2px rgba(10, 61, 145, 0.05),
+    0 8px 16px -4px rgba(10, 61, 145, 0.1),
+    0 24px 40px -20px rgba(10, 61, 145, 0.14);
+
+  --pa-badge-sm: 28px;
+  --pa-badge-md: 36px;
+  --pa-badge-lg: 44px;
+
+  --pa-mascot-glow: radial-gradient(
+    circle at 50% 40%,
+    rgba(63, 157, 240, 0.22),
+    transparent 65%
+  );
+  --pa-mascot-shadow: drop-shadow(0 12px 16px rgba(10, 61, 145, 0.16));
+
+  --gov-code-bg: var(--pa-bg2);
+  --gov-code-tab-bg: var(--pa-white);
+  --gov-code-border: var(--pa-border);
+
+  --gov-window-red: #ff5f57;
+  --gov-window-yellow: #febc2e;
+  --gov-window-green: #28c840;
+
+  --gov-syntax-comment: #8a94a6;
+  --gov-syntax-keyword: #9333ea;
+  --gov-syntax-type: var(--pa-trust);
+  --gov-syntax-generic: #0d9488;
+  --gov-syntax-primitive: #16a34a;
+  --gov-syntax-text: var(--pa-ink);
+
+  --gov-cat-economics: #ffb547;
+  --gov-cat-economics-text: #92400e;
+  --gov-cat-economics-bg: #fff4e0;
+  --gov-cat-economics-icon-bg: linear-gradient(145deg, #ffcb6b, #c2760a);
+  --gov-cat-economics-icon-text: #fff;
+
+
+  --gov-cat-lifecycle: var(--pa-trust);
+  --gov-cat-lifecycle-text: var(--pa-trust);
+  --gov-cat-lifecycle-bg: var(--pa-bg3);
+  --gov-cat-lifecycle-icon-bg: linear-gradient(145deg, #3f9df0, #0a3d91);
+  --gov-cat-lifecycle-icon-text: #fff;
+
+  --gov-cat-elections: #d6449b;
+  --gov-cat-elections-text: #d6449b;
+  --gov-cat-elections-bg: #fbe4f1;
+  --gov-cat-elections-icon-bg: linear-gradient(145deg, #d783d4, #e151bf);
+  --gov-cat-elections-icon-text: #fff;
+
+  --gov-footer-gradient-blue: linear-gradient(150deg, var(--pa-sky), var(--pa-trust-deep));
+  --gov-footer-gradient-pink: linear-gradient(150deg, #d783d4, #ae268f);
+}
+
+.navbar {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  pointer-events: none !important;
+}
+
+.navbar-sidebar,
+.navbar-sidebar__backdrop {
+  pointer-events: auto !important;
+}
+
+.menu__link{
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+.menu__list {
+  gap: 10px;
+}
+
+
+.table-of-contents__link {
+  font-size: medium;
+}
+
+.pagination-nav__label, .pagination-nav__sublabel {
+  font-size: large;
+}
+
+a.theme-edit-this-page {
+   font-size: large; 
+}
+
+.theme-doc-sidebar-container {
+  top: 80px !important;
+  height: calc(100vh - 80px) !important;
+  position: sticky;
+}
+
+.docs-wrapper {
+  padding-top: 80px;
+}
+
+table thead th {
+  background-color: rgba(15, 108, 189, 0.05);
+}
+
+.theme-layout-navbar-sidebar,
+.navbar-sidebar {
+  padding-top: 10px;
+  margin-top: 60px;
+}
+
+.toggle_vylO {
+  display: none;
+}
+
+.navbar-sidebar__close {
+  display: none;
+}
+
+blockquote {
+  border-left: 3px solid var(--pa-border-em);
+  background: rgba(15, 108, 189, 0.04);
+  border-radius: 0;
+  padding: 0.75rem 1.25rem;
+  color: var(--pa-slate);
+  font-style: italic;
+}
+
+.table-of-contents code {
+  font-size: 0.75em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+code {
+  font-size: 0.875em;
+  background: rgba(15, 108, 189, 0.05);
+  border: 1px solid rgba(15, 108, 189, 0.15);
+  border-radius: 0;
+  padding: 0.15em 0.45em;
+  color: var(--pa-trust);
+}
+
+pre {
+  background: #021f3c !important;
+  border: 1px solid rgba(15, 108, 189, 0.13);
+  border-radius: 0 !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem 1.75rem !important;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.codeBlockTitle_node_modules,
+[class*='codeBlockTitle'] {
+  background: rgba(15, 108, 189, 0.03) !important;
+  border-bottom: 1px solid rgba(15, 108, 189, 0.13) !important;
+  color: var(--pa-slate) !important;
+  font-family: var(--pa-font-mono) !important;
+  font-size: 0.8rem !important;
+}
+
+.copyButton_node_modules,
+[class*='copyButton'] {
+  color: var(--pa-slate) !important;
+  transition: color 0.2s !important;
+}
+
+[class*='copyButton']:hover {
+  color: var(--pa-trust) !important;
+}
+
+hr {
+  border-color: var(--pa-border);
+  background-color: rgba(15, 108, 189, 0.08);
+  margin: 2rem 0;
+}
+
+.table-of-contents__left-border,
+div[class*='tocCollapsible'],
+div[class*='tableOfContents'] {
+  top: 80px !important;
+}
+
+.col--3 {
+  top: 20px !important;
+  height: calc(100vh - 20px) !important;
+  position: sticky;
+}

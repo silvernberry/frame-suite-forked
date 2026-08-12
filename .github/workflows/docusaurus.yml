@@ -2,15 +2,17 @@ name: Docusaurus site
 
 on:
   push:
-    branches: [master]
+    branches: [authors-doc]
     paths:
       - 'pallets/xp/docs/**'
       - 'pallets/commitment/docs/**'
+      - 'pallets/authors/docs/**'
   pull_request:
-    branches: [master]
+    branches: [authors-doc]
     paths:
       - 'pallets/xp/docs/**'
       - 'pallets/commitment/docs/**'
+      - 'pallets/authors/docs/**'
   workflow_dispatch:
 
 concurrency:
@@ -42,7 +44,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/authors-doc'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -77,12 +79,47 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/authors-doc'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: pallets/commitment/docs/build
           destination_dir: pallet-commitment/
+          publish_branch: gh-pages
+          force_orphan: false
+          keep_files: true
+
+  build-and-deploy-authors:
+    name: Build & Deploy Pallet-Authors Docs
+    needs: build-and-deploy-commitment
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: pallets/authors/docs
+        run: npm install
+
+      - name: Build Docusaurus
+        working-directory: pallets/authors/docs
+        run: npm run build
+        
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/authors-doc'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: pallets/authors/docs/build
+          destination_dir: pallet-authors/
           publish_branch: gh-pages
           force_orphan: false
           keep_files: true
