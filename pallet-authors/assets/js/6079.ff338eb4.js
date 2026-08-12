@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["6079"],{6402(e,t,a){a.d(t,{createArchitectureServices:()=>r.S});var r=a(5016);a(9302)}}]);

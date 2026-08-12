@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["1100"],{9359(e){e.exports=JSON.parse('{"metadata":{"permalink":"/frame-suite-forked/pallet-authors/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":0,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

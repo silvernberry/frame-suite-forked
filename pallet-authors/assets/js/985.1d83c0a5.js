@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["985"],{3872(e,a,s){s.d(a,{createRadarServices:()=>r.f});var r=s(5160);s(9302)}}]);

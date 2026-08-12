@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["1962"],{4737(e,a,s){s.d(a,{createPieServices:()=>t.f});var t=s(532);s(9302)}}]);

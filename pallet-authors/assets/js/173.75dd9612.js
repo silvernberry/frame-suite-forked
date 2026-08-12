@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["173"],{7180(e,a,s){s.d(a,{createPacketServices:()=>t.$});var t=s(4824);s(9302)}}]);

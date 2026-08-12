@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["1833"],{5513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPallet_authors=self.webpackChunkPallet_authors||[]).push([["8744"],{2555(e,a,s){s.d(a,{createWardleyServices:()=>l.J});var l=s(4837);s(9302)}}]);
