@@ -1,0 +1,85 @@
+.headerRow {
+  max-width: 760px;
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+  margin-bottom: 1em;
+}
+
+.eyebrow {
+  font-family: var(--cm-font-mono);
+  font-size: var(--fs-title-eye);
+  letter-spacing: .16em;
+  color: var(--cm-seal);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--fs-title);
+  color: var(--cm-ink);
+  margin: 0 0 .5em;
+  line-height: 1.25;
+}
+
+.accent {
+  color: var(--cm-seal);
+}
+
+.desc {
+  font-size: var(--fs-title-sub);
+  color: var(--cm-ink-soft);
+  max-width: 68ch;
+  margin: 0;
+}
+
+.headerRowImg {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--cm-space-7);
+  align-items: center;
+}
+
+.textCol {
+  max-width: none;
+}
+
+.headerImg {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  display: block;
+}
+
+/* Breakpoints */
+
+@media (max-width: 768px) {
+  .headerRow {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .eyebrowRow {
+    justify-content: center;
+  }
+
+  .desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .headerRowImg {
+    grid-template-columns: 1fr;
+    gap: var(--cm-space-6);
+  }
+
+  .headerImg {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

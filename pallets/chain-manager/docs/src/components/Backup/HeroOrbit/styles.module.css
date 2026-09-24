@@ -1,0 +1,168 @@
+.orbitWrap {
+  --live-angle: 0deg;
+  --radius: clamp(108px, 25vw, 172px);
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+/* Center: Folio */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.centerBadge {
+  width: clamp(84px, 20vw, 128px);
+  height: clamp(84px, 20vw, 128px);
+  border-radius: 50%;
+  /* background: var(--cm-paper-deep);
+  border: 2px solid var(--cm-ink); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 0 6px var(--cm-paper), 0 0 0 7px var(--cm-rule-light);
+}
+.centerImg {
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Orbit ring path, purely decorative */
+.orbitWrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
+  transform: translate(-50%, -50%);
+  border: 1px dashed var(--cm-rule);
+  border-radius: 50%;
+  opacity: .6;
+  pointer-events: none;
+}
+
+/* Node positioning - classic CSS orbit transform chain.
+   translate(-50%,-50%) centers the box; rotate() sets angular position;
+   translateX(radius) pushes it out along the rotated axis; the final
+   rotate(-angle) cancels the rotation so the content stays upright. */
+.node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  text-decoration: none;
+  transform:
+    translate(-50%, -50%)
+    rotate(calc(var(--base-angle) + var(--live-angle)))
+    translateX(var(--radius))
+    rotate(calc(-1 * (var(--base-angle) + var(--live-angle))));
+}
+
+.nodeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .35em;
+  width: clamp(64px, 15vw, 84px);
+  padding: .6em .4em;
+  /* background: var(--cm-paper-deep);
+  border: 1.5px solid var(--cm-rule); */
+  border-radius: 10px;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.nodeImg {
+  /* width: 26px;
+  height: 26px; */
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.nodeLabel {
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-2xs);
+  letter-spacing: .03em;
+  color: var(--cm-ink);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.node:hover .nodeInner,
+.nodeHover .nodeInner {
+  border-color: var(--cm-seal);
+  background: var(--cm-paper);
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(33, 28, 19, .12);
+}
+
+.nodeSelected .nodeInner {
+  border-color: var(--cm-seal);
+  background: var(--cm-paper);
+  transform: scale(1.14);
+  box-shadow: 0 4px 14px rgba(138, 31, 31, .22);
+}
+.nodeSelected .nodeLabel { color: var(--cm-seal); }
+
+.nodeDim .nodeInner {
+  opacity: .4;
+}
+
+/* Detail bubble, shown on selection */
+.detailBubble {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translate(-50%, 100%);
+  z-index: 3;
+  width: min(280px, 90%);
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-seal);
+  padding: 1em 1.2em;
+  box-shadow: 0 8px 22px rgba(33, 28, 19, .16);
+}
+.detailBubble strong {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-md);
+  color: var(--cm-seal);
+  display: block;
+  margin-bottom: .3em;
+}
+.detailBubble p {
+  font-size: var(--cm-fs-sm);
+  color: var(--cm-ink-soft);
+  margin: 0 0 .7em;
+}
+.detailClose {
+  position: absolute;
+  top: .5em;
+  right: .6em;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--cm-ink-faint);
+  cursor: pointer;
+  padding: .2em;
+}
+.detailClose:hover { color: var(--cm-seal); }
+.detailLink {
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-xs);
+  color: var(--cm-seal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--cm-seal);
+}
+.detailLink:hover { color: var(--cm-seal-deep); border-color: var(--cm-seal-deep); }
+
+@media (prefers-reduced-motion: reduce) {
+  .node { transition: none; }
+}

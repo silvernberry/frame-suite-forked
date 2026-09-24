@@ -1,0 +1,136 @@
+.section {
+    max-width: var(--cm-width-wide);
+    margin: 0 auto;
+    padding: var(--cm-space-9) 28px;
+}
+
+.stepGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--cm-space-3);
+    margin-top: var(--cm-space-7);
+}
+
+.stepCard {
+    border: 1px solid var(--cm-rule);
+    background: var(--cm-paper-deep);
+    padding: var(--cm-card-padding);
+    display: flex;
+    flex-direction: column;
+}
+
+.stepTop {
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    margin-bottom: .8em;
+}
+
+.stepBadge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--cm-ink);
+    color: var(--cm-paper);
+    font-family: var(--cm-font-mono);
+    font-size: var(--fs-card-nmbr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stepCard h3 {
+    font-family: var(--cm-font-display);
+    font-weight: 400;
+    font-size: var(--fs-card-title-md);
+    color: var(--cm-ink);
+    margin: 0;
+}
+
+.stepImg {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    object-fit: cover;
+    margin: .7em 0;
+    display: block;
+}
+
+.desc {
+    font-size: var(--fs-card-des);
+    margin: 0;
+    color: var(--cm-ink-soft);
+}
+
+.capBar {
+    display: flex;
+    border: 1px solid var(--cm-rule);
+    margin-top: var(--cm-space-6);
+    flex-wrap: wrap;
+}
+
+.capItem {
+    flex: 1;
+    min-width: 180px;
+    padding: var(--cm-box-padding-lg);
+    display: flex;
+    gap: .7em;
+    align-items: flex-start;
+    border-right: 1px solid var(--cm-rule-light);
+}
+
+.capItem:last-child {
+    border-right: none;
+}
+
+.capItem svg {
+    width: 20px;
+    height: 20px;
+    color: var(--cm-seal);
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.capItem strong {
+    display: block;
+    font-family: var(--cm-font-display);
+    font-weight: 400;
+    font-size: var(--fs-feat-title);
+    color: var(--cm-ink);
+    margin-bottom: .2em;
+}
+
+.capItem p {
+    font-size: var(--fs-cta-des);
+    margin: 0;
+    color: var(--cm-ink-soft);
+}
+
+/* Breakpoints */
+
+@media (max-width: 920px) {
+    .stepGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 960px) {
+    .capItem {
+        border-right: none;
+        border-bottom: 1px solid var(--cm-rule-light);
+        padding: var(--cm-box-padding-md);
+    }
+
+    .capItem:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .stepGrid {
+        grid-template-columns: 1fr;
+    }
+    .capItem {
+        padding: var(--cm-box-padding-sm);
+    }
+}

@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* ---- Palette ---------------------------------------------------------- */
+  --cm-paper:        #F1E9D2;
+  --cm-paper-deep:   #E7DBB9;
+  --cm-paper-void:   #DCCEA2;
+  --cm-ink:          #211C13;
+  --cm-ink-soft:     #3a352dc2;
+  /* --cm-ink-soft:     #4C4230; */
+  --cm-ink-faint:    #8A7C5C;
+  --cm-rule:         #B39F72;
+  --cm-rule-light:   #D6C79A;
+  --cm-gold:         #8F6F2A;
+  --cm-seal:         #8A1F1F;
+  --cm-red-soft-bg: rgba(138, 31, 31, .05);
+  --cm-seal-light:   #A8302F;
+  --cm-seal-lighter: #B23D3C;
+  --cm-seal-lightest:#C85F5E;
+  --cm-seal-deep:    #631414;
+  --cm-seal-darkest: #4A0F0F;
+  --cm-blue:         #253A56;
+
+  /* ---- Typography --------------------------------------------------------- */
+  --cm-font-display: 'Libre Caslon Display', Georgia, 'Times New Roman', serif;
+  --cm-font-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --cm-font-mono:    'Courier Prime', 'Courier New', monospace;
+
+  /* ---- Layout ------------------------------------------------------------- */
+  --cm-width-text:   700px;
+  --cm-width-wide:   clamp(1500px, 85vw, 1850px);
+
+  /* ---- Infima mappings ----------------------------------------------------- */
+  --ifm-background-color: var(--cm-paper);
+  --ifm-font-color-base: var(--cm-ink-soft);
+  --ifm-heading-color: var(--cm-ink);
+  --ifm-font-family-base: var(--cm-font-body);
+  --ifm-heading-font-family: var(--cm-font-display);
+
+  --ifm-color-primary: var(--cm-seal);
+  --ifm-color-primary-dark: var(--cm-seal-deep);
+  --ifm-color-primary-darker: var(--cm-seal-deep);
+  --ifm-color-primary-darkest: var(--cm-seal-darkest);
+  --ifm-color-primary-light: var(--cm-seal-light);
+  --ifm-color-primary-lighter: var(--cm-seal-lighter);
+  --ifm-color-primary-lightest: var(--cm-seal-lightest);
+
+  --ifm-link-color: var(--cm-seal);
+  --ifm-code-font-size: 90%;
+  --ifm-code-background: var(--cm-paper-deep);
+  --docusaurus-highlighted-code-line-bg: rgba(33, 28, 19, 0.12);
+
+  --ifm-navbar-background-color: var(--cm-paper);
+  --ifm-footer-background-color: var(--cm-paper);
+  --ifm-footer-color: var(--cm-ink-soft);
+  --ifm-footer-link-color: var(--cm-ink-soft);
+  --ifm-footer-title-color: var(--cm-gold);
+
+  --cm-fs-2xs:     0.62rem;  
+  --cm-fs-xs:      0.7rem;   
+  --cm-fs-sm:      0.78rem;  
+  --cm-fs-base:    0.88rem;  
+  --cm-fs-md:      0.96rem; 
+  --cm-fs-lg:      1.05rem;  
+  --cm-fs-xl:      1.3rem;  
+  --cm-fs-2xl:     1.9rem;   
+  --cm-fs-display: clamp(2.2rem, 4.8vw, 3.6rem); 
+
+
+  --fs-title-eye:  clamp(0.75rem,1.4vw, 0.9rem);
+  --fs-title:  clamp(1.6rem, 4vw, 2.4rem);
+  --fs-title-sm:  clamp(1.4rem, 4vw, 2rem);
+  --fs-title-sub: clamp(0.9rem, 1.4vw, 1rem);
+
+  --fs-card-title: clamp(0.85rem, 1.2vw, 1rem);
+  --fs-card-title-md: clamp(1rem, 2vw, 1.2rem);
+  --fs-card-title-lg: clamp(1.2rem, 2vw, 1.4rem);
+  --fs-card-des: clamp(0.8rem, 1.2vw, 0.9rem);
+  --fs-card-ext-link: clamp(0.5rem, 1.2vw, 0.65rem);
+  --fs-card-nmbr: clamp(0.75rem, 1vw, 0.8rem);
+
+  /* cta font sizes */
+  --fs-cta-eye: clamp(0.65rem, 1.4vw, 0.75rem);
+  --fs-cta-title: clamp(1rem, 1.4vw, 1.2rem);
+  --fs-cta-des: clamp(0.75rem, 1.2vw, 0.85rem);
+  --fs-badge: clamp(0.7rem, 0.85vh, 0.9rem);
+  --fs-badge-lg: clamp(0.8rem, 0.85vh, 1rem);
+  --fs-badge-xl: clamp(0.9rem, 0.85vh, 1.1rem);
+
+  --fs-feat-title: clamp(0.9rem, 1.2vw, 1.1rem);
+
+  --cm-space-1: 0.4rem;
+  --cm-space-2: 0.6rem;
+  --cm-space-3: 0.9rem;
+  --cm-space-4: 1.2rem;
+  --cm-space-5: 1.6rem;
+  --cm-space-6: 2rem;
+  --cm-space-7: 2.6rem;
+  --cm-space-8: 3.2rem;
+  --cm-space-9: 4.4rem;
+  --cm-box-padding-lg: 1.2em 1.4em;
+  --cm-box-padding-md: 1em 1.2em;
+  --cm-box-padding-sm: 0.85em 1em;
+  --cm-card-padding: 1em 1em;
+  --cm-card-padding-lg: 1.4em 1.4em;
+}
+
+body {
+  font-family: var(--cm-font-body);
+}
+
+.navbar {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  pointer-events: none !important;
+}
+
+.navbar-sidebar,
+.navbar-sidebar__backdrop {
+  pointer-events: auto !important;
+}
+
+.menu__link{
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+.menu__list {
+  gap: 10px;
+}
+
+.table-of-contents__link {
+  font-size: medium;
+}
+
+.pagination-nav__label, .pagination-nav__sublabel {
+  font-size: large;
+  color: var(--cm-seal);
+}
+
+a.theme-edit-this-page {
+   font-size: large; 
+}
+
+.theme-doc-sidebar-container {
+  top: 20px !important;
+  height: calc(100vh - 20px) !important;
+  position: sticky;
+}
+
+/* .docs-wrapper {
+  padding-top: 80px;
+} */
+
+table thead th {
+  background-color: var(--cm-paper-deep);
+}
+
+.theme-layout-navbar-sidebar,
+.navbar-sidebar {
+  padding-top: 10px;
+  margin-top: 60px;
+}
+
+.toggle_vylO {
+  display: none;
+}
+
+.navbar-sidebar__close {
+  display: none;
+}
+
+blockquote {
+  border-left: 3px solid var(--cm-gold);
+  background: rgba(33, 28, 19, 0.045);
+  border-radius: 0;
+  padding: 0.75rem 1.25rem;
+  color: var(--cm-ink-soft);
+  font-style: italic;
+}
+
+.table-of-contents code {
+  font-size: 0.75em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+code {
+  font-size: 0.875em;
+  background: var(--cm-paper-deep);
+  border: 1px solid var(--cm-rule);
+  border-radius: 0;
+  padding: 0.15em 0.45em;
+  color: var(--cm-ink);
+}
+
+pre {
+  background: var(--cm-ink) !important;
+  border: 1px solid var(--cm-ink);
+  border-radius: 0 !important;
+  padding: 1.5rem 1.75rem !important;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.codeBlockTitle_node_modules,
+[class*='codeBlockTitle'] {
+  background: var(--cm-paper-deep) !important;
+  border-bottom: 1px solid var(--cm-rule) !important;
+  color: var(--cm-ink-soft) !important;
+  font-family: var(--cm-font-mono) !important;
+  font-size: var(--cm-fs-sm) !important;
+}
+
+.copyButton_node_modules,
+[class*='copyButton'] {
+  color: var(--cm-rule-light) !important;
+  transition: color 0.2s !important;
+}
+
+[class*='copyButton']:hover {
+  color: var(--cm-gold) !important;
+}
+
+div.navbar-sidebar__brand {
+  display: none;
+}
+hr {
+  border-color: var(--cm-rule);
+  background-color: rgba(33, 28, 19, 0.06);
+  margin: var(--cm-space-6) 0;
+}
+
+.table-of-contents__left-border,
+div[class*='tocCollapsible'],
+div[class*='tableOfContents'] {
+  top: 80px !important;
+}
+
+.col--3 {
+  top: 20px !important;
+  height: calc(100vh - 20px) !important;
+  position: sticky;
+}

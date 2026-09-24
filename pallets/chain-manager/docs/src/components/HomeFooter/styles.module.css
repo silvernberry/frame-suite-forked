@@ -1,0 +1,261 @@
+/* Footer */
+
+.footer {
+  font-family: var(--cm-font-body);
+  background-color: var(--cm-paper);
+  padding: 0 48px 0;
+  border-top: 3px double var(--cm-ink);
+}
+
+.box {
+  max-width: var(--cm-width-wide);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.logoMark {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--cm-ink);
+}
+.logoMarkAccent { color: var(--cm-seal); }
+
+.brandName {
+  font-family: var(--cm-font-display);
+  font-size: var(--fs-cta-title);
+  color: var(--cm-ink);
+  white-space: nowrap;
+}
+
+.tagline {
+  font-family: var(--cm-font-body);
+  font-size: var(--fs-cta-des);
+  color: var(--cm-ink-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 80px;
+}
+
+.colHeading {
+  display: flex;
+  align-items: center;
+  font-family: var(--cm-font-mono);
+  font-size: var(--fs-badge-lg);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--cm-gold);
+  margin: 0;
+}
+
+.colLink {
+  font-family: var(--cm-font-body);
+  font-size: var(--fs-badge-lg);
+  color: var(--cm-ink-soft);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.colLink:hover { color: var(--cm-seal); }
+
+.auguthBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auguthImgBox {
+  background: var(--pc-bg2);
+  border: 1px solid var(--cm-rule);
+  border-radius: 8px;
+  display: inline-block;
+  max-width: 160px;
+}
+
+.auguthImg {
+  width: 100%;
+  border-radius: 8px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.auguthSub {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--cm-font-body);
+  font-size: var(--fs-cta-des);
+  color: var(--cm-ink-faint);
+  padding-top: 5px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.linksBlock {
+  display: flex;
+  gap: 35px;
+}
+
+.innerVsep {
+  width: 1px;
+  background: var(--cm-rule-light);
+  align-self: stretch;
+  flex-shrink: 0;
+  margin: 0 24px;
+}
+
+.outerVsep {
+  width: 1px;
+  background: var(--cm-rule-light);
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.hdivider {
+  height: 1px;
+  background: var(--cm-rule-light);
+  width: 100%;
+}
+
+.bottom {
+  border-top: 1px solid var(--cm-rule);
+  padding: 14px 36px;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.copy {
+  font-family: var(--cm-font-mono);
+  font-size: var(--fs-badge);
+  color: var(--cm-ink-faint);
+  margin: 0;
+}
+
+.fIcon {
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+.desktopRow {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 36px 36px 28px;
+  gap: 0;
+}
+
+.leftBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  flex: 1;
+  padding-right: 28px;
+}
+
+.licBadge {
+  display: inline-flex;
+  align-items: center;
+  max-width: fit-content;
+  gap: 8px;
+  border: 1px dashed var(--cm-rule);
+  padding: 5px 14px;
+  margin-top: 15px;
+  font-family: var(--cm-font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cm-ink-soft);
+  text-decoration: none !important;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.licBadge:hover {
+  border-color: var(--cm-seal-light);
+  color: var(--cm-seal);
+}
+
+.pxpBlock {
+  flex: 1;
+  min-width: 0;
+}
+
+.desktopAuguth {
+  padding-left: 28px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tabletLayout { display: none; }
+.mobileLayout { display: none; }
+
+/* Breakpoints */
+
+@media (max-width: 900px) {
+  .footer { padding: 0 32px 0; }
+
+  .desktopRow { display: none; }
+  .mobileLayout { display: none; }
+
+  .tabletLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 24px;
+  }
+
+  .tabletTop { display: flex; flex-direction: column; }
+
+  .tabletBottom {
+    display: grid;
+    grid-template-columns: auto 1px 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  .tabletBottom > .auguthBlock { padding-right: 24px; }
+  .tabletBottom > .linksBlock { padding-left: 24px; }
+
+  .bottom { padding: 14px 24px; }
+}
+
+@media (max-width: 600px) {
+  .footer { padding: 0 20px 0; }
+
+  .desktopRow  { display: none; }
+  .tabletLayout { display: none; }
+
+  .brandRow { margin-bottom: 0px; }
+
+  .mobileLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px 16px;
+  }
+
+  .licBadge { margin-top: 0px; }
+
+  .brandName { font-size: clamp(1rem, 5vw, 1.3rem); }
+}

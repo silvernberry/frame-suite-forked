@@ -11,6 +11,9 @@ authors.workspace = true
 repository.workspace = true
 edition.workspace = true
 
+exclude = [
+    "docs/**",
+]
 
 [dependencies]
 codec.workspace = true

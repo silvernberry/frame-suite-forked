@@ -1,0 +1,105 @@
+.section {
+  max-width: var(--cm-width-wide);
+  margin: 0 auto;
+  padding: 4.4rem 28px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--cm-space-4);
+  margin-top: var(--cm-space-7);
+}
+
+.card {
+  border: 1px solid var(--cm-rule);
+  padding: 1.4em 1.3em;
+  background: var(--cm-paper-deep);
+}
+
+.iconBadge {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .9em;
+}
+
+.iconBadge svg {
+  width: 19px;
+  height: 19px;
+}
+
+.badgeAffidavits {
+  background: #D9CDBB;
+  color: var(--cm-ink-soft);
+}
+
+.badgeElections {
+  background: var(--cm-paper-void);
+  color: var(--cm-ink);
+}
+
+.badgeAuthors {
+  background: var(--cm-rule-light);
+  color: var(--cm-ink);
+}
+
+.badgePoints {
+  background: #EAD9A6;
+  color: var(--cm-gold);
+}
+
+.badgeRewards {
+  background: #CBD3DD;
+  color: var(--cm-blue);
+}
+
+.badgePenalties {
+  background: #E9CFC7;
+  color: var(--cm-seal);
+}
+
+.card h3 {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--fs-card-title-lg);
+  margin: 0 0 .4em;
+  color: var(--cm-ink);
+}
+
+.card p {
+  font-size: var(--fs-card-des);
+  color: var(--cm-ink-soft);
+  margin-bottom: .6em;
+}
+
+.tag {
+  font-family: var(--cm-font-mono);
+  font-size: var(--fs-badge);
+  color: var(--cm-ink-faint);
+  border-top: 1px dotted var(--cm-rule);
+  padding-top: .5em;
+  display: block;
+}
+
+/* Breakpoints */
+
+@media (max-width: 720px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}

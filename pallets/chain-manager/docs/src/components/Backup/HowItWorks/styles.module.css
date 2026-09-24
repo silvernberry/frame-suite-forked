@@ -1,0 +1,355 @@
+.section {
+  max-width: var(--cm-width-wide);
+  margin: 0 auto;
+  padding: var(--cm-space-9) 28px;
+  /* 4.4rem, exact match */
+}
+
+/* Header row */
+.headerRow {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--cm-space-7);
+  align-items: center;
+}
+
+/* 2.6rem, exact match */
+@media (max-width: 768px) {
+  .headerRow {
+    grid-template-columns: 1fr;
+    gap: var(--cm-space-6);
+  }
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+  margin-bottom: 1em;
+}
+
+.eyebrowDash {
+  width: 26px;
+  height: 1px;
+  background: var(--cm-seal);
+}
+
+.eyebrowTxt {
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-xs);
+  /* .7rem, exact match */
+  letter-spacing: .16em;
+  color: var(--cm-seal);
+  text-transform: uppercase;
+}
+
+.sectionHead {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-2xl);
+  /* 1.9rem, exact match */
+  color: var(--cm-ink);
+  margin: 0 0 .5em;
+  line-height: 1.25;
+}
+
+.accent {
+  color: var(--cm-seal);
+}
+
+.lede {
+  font-size: var(--cm-fs-lg);
+  color: var(--cm-ink-soft);
+  /* max-width: 54ch; */
+  margin: 0;
+}
+
+/* .98rem → nearest is fs-lg (1.05rem) */
+
+@media (max-width: 768px) {
+  .headerText {
+    text-align: center;
+  }
+
+  .eyebrowRow {
+    justify-content: center;
+  }
+
+  .lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* .headerImg {
+  width: 100%;
+  aspect-ratio: 5 / 2;
+  border: 2px dashed var(--cm-ink-faint);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 10px, rgba(33, 28, 19, .045) 10px 20px),
+    var(--cm-paper-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .5em;
+  padding: 1.6em;
+  color: var(--cm-ink-faint);
+}
+
+.imgIcon {
+  width: 38px;
+  height: 38px;
+  opacity: .7;
+}
+
+.imgIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.imgFilename {
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-xs);
+  color: var(--cm-ink-faint);
+}
+
+.imgBrief {
+  font-family: var(--cm-font-body);
+  font-size: var(--cm-fs-sm);
+  font-style: italic;
+  color: var(--cm-ink-soft);
+  max-width: 30ch;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .headerImg {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+} */
+
+/* 7-step grid */
+.stepGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--cm-space-3);
+  margin-top: var(--cm-space-7);
+}
+
+/* gap .9rem exact, margin 2.6rem exact */
+@media (max-width: 920px) {
+  .stepGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .stepGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 440px) {
+  .stepGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stepCard {
+  border: 1px solid var(--cm-rule);
+  background: var(--cm-paper-deep);
+  padding: 1.1em 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepCardWide {
+  grid-column: span 2;
+}
+
+.stepTop {
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  margin-bottom: .7em;
+}
+
+.stepBadge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--cm-ink);
+  color: var(--cm-paper);
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepMascot {
+  width: 26px;
+  height: 28px;
+  border: 1.5px dashed var(--cm-ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.stepMascot svg {
+  width: 16px;
+  height: 17px;
+  color: var(--cm-ink-faint);
+}
+
+.stepCard h3 {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-md);
+  color: var(--cm-ink);
+  margin: 0 0 .35em;
+}
+
+/* .94rem → nearest fs-md */
+.stepCard p {
+  font-size: var(--cm-fs-sm);
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+.splitRow {
+  display: flex;
+  gap: var(--cm-space-2);
+  margin-top: .2em;
+}
+
+/* .6rem, exact match */
+.splitCard {
+  flex: 1;
+  border: 1px solid var(--cm-rule-light);
+  padding: .6em .6em;
+}
+
+.splitCard strong {
+  display: block;
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-sm);
+  margin-bottom: .25em;
+}
+
+.splitCard p {
+  font-size: var(--cm-fs-xs);
+  margin: 0;
+  color: var(--cm-ink-soft);
+}
+
+.splitCardReward {
+  border-top: 2px solid var(--cm-blue);
+}
+
+.splitCardReward strong {
+  color: var(--cm-blue);
+}
+
+.splitCardPenalty {
+  border-top: 2px solid var(--cm-seal);
+}
+
+.splitCardPenalty strong {
+  color: var(--cm-seal);
+}
+
+/* Affidavit lane */
+.laneCard {
+  border: 1px solid var(--cm-ink);
+  background: var(--cm-paper-void);
+  padding: 1.6em 1.6em;
+  margin-top: var(--cm-space-5);
+}
+
+/* 1.4rem → nearest fs-5 (1.6rem) */
+.laneBadge {
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-2xs);
+  /* .64rem → nearest fs-2xs (.62rem) */
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cm-seal);
+  margin-bottom: .6em;
+  display: block;
+}
+
+.laneCard h3 {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-lg);
+  color: var(--cm-ink);
+  margin: 0 0 .4em;
+}
+
+/* 1.15rem → nearest fs-lg */
+.laneCard>p {
+  font-size: var(--cm-fs-base);
+  max-width: 60ch;
+  margin-bottom: 1.2em;
+  color: var(--cm-ink-soft);
+}
+
+/* .88rem, exact match */
+
+.laneSteps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--cm-space-2);
+}
+
+/* .7rem → nearest space-2 (.6rem) */
+@media (max-width: 760px) {
+  .laneSteps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .laneSteps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.laneStep {
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-rule);
+  padding: 1em .7em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.laneStepIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--cm-seal);
+  margin-bottom: .6em;
+}
+
+.laneStep h4 {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-sm);
+  color: var(--cm-ink);
+  margin: 0 0 .3em;
+}
+
+.laneStep p {
+  font-size: var(--cm-fs-xs);
+  margin: 0;
+  color: var(--cm-ink-soft);
+}
