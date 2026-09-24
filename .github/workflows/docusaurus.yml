@@ -2,14 +2,14 @@ name: Docusaurus site
 
 on:
   push:
-    branches: [authors-doc]
+    branches: [cm-doc]
     paths:
       - 'pallets/xp/docs/**'
       - 'pallets/commitment/docs/**'
       - 'pallets/authors/docs/**'
       - 'pallets/chain-manager/docs/**'
   pull_request:
-    branches: [authors-doc]
+    branches: [cm-doc]
     paths:
       - 'pallets/xp/docs/**'
       - 'pallets/commitment/docs/**'
