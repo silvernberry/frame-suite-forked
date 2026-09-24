@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchain_manager=self.webpackChunkchain_manager||[]).push([["1192"],{2177(a){a.exports=JSON.parse('{"metadata":{"permalink":"/frame-suite-forked/pallet-chain-manager/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":0,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

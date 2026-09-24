@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchain_manager=self.webpackChunkchain_manager||[]).push([["1833"],{5513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);

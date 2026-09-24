@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchain_manager=self.webpackChunkchain_manager||[]).push([["6762"],{7089(e,a,c){c.d(a,{createArchitectureServices:()=>r.S});var r=c(5796);c(4954)}}]);

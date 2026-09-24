@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchain_manager=self.webpackChunkchain_manager||[]).push([["2395"],{9590(e,a,c){c.d(a,{createPieServices:()=>n.f});var n=c(6041);c(4954)}}]);
