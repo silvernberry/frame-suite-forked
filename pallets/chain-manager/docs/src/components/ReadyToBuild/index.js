@@ -11,7 +11,7 @@ const ArrowIcon = () => (
 const STEPS = [
   {
     id: '01',
-    content: <>Clone the <Link to="/docs/getting-started/example-runtime">template repositry</Link></>,
+    content: <>Clone the <Link to="/docs/getting-started/installation">template repositry</Link></>,
   },
   {
     id: '02',
