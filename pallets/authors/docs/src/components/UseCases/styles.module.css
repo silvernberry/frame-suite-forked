@@ -233,6 +233,10 @@
   text-decoration: none;
 }
 
+.stepText a:hover {
+  text-decoration: underline;
+}
+
 /* Breakpoints */
 
 @media (max-width: 899.98px) {

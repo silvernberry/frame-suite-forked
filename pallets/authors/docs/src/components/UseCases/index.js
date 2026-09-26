@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 const mascotImg = require('@site/static/img/title-mascots/tm-usecase.png').default;
@@ -80,9 +81,9 @@ const TILES = [
 ];
 
 const STEPS = [
-  { text: <>Clone the <a href="#">template repository</a></> },
-  { text: <>Follow the <a href="#">Installation Guide</a></> },
-  { text: 'Build your own XP powered Runtime' },
+  { text: <>Clone the <a href="https://github.com/auguth/authors-substrate-template">template repository</a></> },
+  { text: <>Follow the <Link to="/docs/getting-started/installation">installation Guide</Link></> },
+  { text: 'Build your own runtime with author role management' },
 ];
 
 export default function UseCases() {
@@ -134,9 +135,9 @@ export default function UseCases() {
               authors - so you can focus on building the future of your
               network.
             </p>
-            <a className={styles.btn} href="#">
+            <Link className={styles.btn} to="/docs/start">
               Get Started Today →
-            </a>
+            </Link>
           </div>
 
           <div className={`${styles.card} ${styles.cardSteps}`}>

@@ -3,8 +3,8 @@ import styles from './styles.module.css';
 
 const mascotImg = require('@site/static/img/title-mascots/tm-penalties.png').default;
 
-const rewardCardImg = require('@site/static/img/docusaurus-social-card.jpg').default;
-const penaltyCardImg = require('@site/static/img/docusaurus-social-card.jpg').default;
+const rewardCardImg = require('@site/static/img/rewardsandpen/reward-1.png').default;
+const penaltyCardImg = require('@site/static/img/rewardsandpen/penalty-1.png').default;
 
 const SparkleIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

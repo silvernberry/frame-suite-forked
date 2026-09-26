@@ -43,7 +43,7 @@
 
   /* ---- Code blocks ---- */
   --ifm-code-background: rgba(15, 108, 189, 0.05);
-  --ifm-pre-background: #0b1220;
+  --ifm-pre-background: #f7fafe;
   --ifm-pre-border-radius: 10px;
 
   /* ---- Tables ---- */
@@ -311,13 +311,13 @@
   gap: 10px;
 }
 
-
 .table-of-contents__link {
   font-size: medium;
 }
 
 .pagination-nav__label, .pagination-nav__sublabel {
   font-size: large;
+  color: #0F6CBD;
 }
 
 a.theme-edit-this-page {
@@ -325,8 +325,8 @@ a.theme-edit-this-page {
 }
 
 .theme-doc-sidebar-container {
-  top: 80px !important;
-  height: calc(100vh - 80px) !important;
+  top: 20px !important;
+  height: calc(100vh - 20px) !important;
   position: sticky;
 }
 
@@ -371,7 +371,7 @@ blockquote {
 
 code {
   font-size: 0.875em;
-  background: rgba(15, 108, 189, 0.05);
+  /* background: rgba(15, 108, 189, 0.05); */
   border: 1px solid rgba(15, 108, 189, 0.15);
   border-radius: 0;
   padding: 0.15em 0.45em;
@@ -379,10 +379,10 @@ code {
 }
 
 pre {
-  background: #021f3c !important;
+  /* background: #021f3c !important; */
   border: 1px solid rgba(15, 108, 189, 0.13);
   border-radius: 0 !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); */
   padding: 1.5rem 1.75rem !important;
 }
 
@@ -414,6 +414,9 @@ pre code {
   color: var(--pa-trust) !important;
 }
 
+div.navbar-sidebar__brand {
+  display: none;
+}
 hr {
   border-color: var(--pa-border);
   background-color: rgba(15, 108, 189, 0.08);

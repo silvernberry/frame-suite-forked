@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
+const logoMark  = require('@site/static/img/favicon-1.png').default;
 const auguthImg = require('@site/static/img/auguth_labs_logo.png').default;
 
 const links = [
@@ -142,6 +143,9 @@ export default function HomeFooter() {
           <div className={styles.leftBlock}>
             <div className={styles.pxpBlock}>
               <div className={styles.brandRow}>
+                <div className={styles.logoMark}>
+                  <img src={logoMark} alt="Pallet-Authors" className={styles.logoMarkImg} />
+                </div>
                 <span className={styles.brandName}>Pallet-Authors</span>
               </div>
               <p className={styles.tagline}>
