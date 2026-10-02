@@ -1,0 +1,225 @@
+.orbitWrap {
+  --live-angle: 0deg;
+  --radius: clamp(150px, 16vw, 230px);
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.centerBadge {
+  width: clamp(170px, 20vw, 260px);
+  height: clamp(170px, 20vw, 260px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerImg {
+  width: 96%;
+  height: 96%;
+  object-fit: contain;
+  display: block;
+}
+
+.orbitWrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
+  transform: translate(-50%, -50%);
+  border: 1px dashed var(--cm-rule);
+  border-radius: 50%;
+  opacity: .6;
+  pointer-events: none;
+}
+
+.node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  text-decoration: none;
+  transform:
+    translate(-50%, -50%) rotate(calc(var(--base-angle) + var(--live-angle))) translateX(var(--radius)) rotate(calc(-1 * (var(--base-angle) + var(--live-angle))));
+}
+
+.nodeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55em;
+  transition: opacity .15s ease;
+}
+
+.nodeIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(58px, 6.5vw, 76px);
+  height: clamp(58px, 6.5vw, 76px);
+  background: var(--cm-paper-deep);
+  border: 1.5px solid var(--cm-rule);
+  border-radius: 10px;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.nodeIcon {
+  width: clamp(28px, 3.3vw, 38px);
+  height: clamp(28px, 3.3vw, 38px);
+  flex-shrink: 0;
+  color: var(--node-color, var(--cm-ink));
+  transition: color .15s ease;
+}
+
+.nodeLabel {
+  font-family: var(--cm-font-mono);
+  font-size: var(--cm-fs-sm);
+  letter-spacing: .03em;
+  color: var(--cm-ink);
+  text-align: center;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: color .15s ease;
+}
+
+.node:hover .nodeIconBox,
+.nodeHover .nodeIconBox {
+  border-color: var(--cm-seal);
+  background: var(--cm-paper);
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(33, 28, 19, .12);
+}
+
+.node:hover .nodeIcon,
+.nodeHover .nodeIcon {
+  color: var(--cm-seal);
+}
+
+.node:hover .nodeLabel,
+.nodeHover .nodeLabel {
+  color: var(--cm-seal);
+}
+
+.nodeSelected .nodeIconBox {
+  border-color: var(--cm-seal);
+  background: var(--cm-paper);
+  transform: scale(1.14);
+  box-shadow: 0 4px 14px rgba(138, 31, 31, .22);
+}
+
+.nodeSelected .nodeIcon {
+  color: var(--cm-seal);
+}
+
+.nodeSelected .nodeLabel {
+  color: var(--cm-seal);
+}
+
+.nodeDim .nodeInner {
+  opacity: .4;
+}
+
+.detailBubble {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translate(-50%, 100%);
+  z-index: 3;
+  width: min(280px, 90%);
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-seal);
+  padding: 1em 1.2em;
+  box-shadow: 0 8px 22px rgba(33, 28, 19, .16);
+}
+
+.detailBubble strong {
+  font-family: var(--cm-font-display);
+  font-weight: 400;
+  font-size: var(--cm-fs-md);
+  color: var(--cm-seal);
+  display: block;
+  margin-bottom: .3em;
+}
+
+.detailBubble p {
+  font-size: var(--cm-fs-md);
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+/* Breakpoints */
+
+@media (max-width: 1140px) {
+  .orbitWrap {
+    max-width: 460px;
+    --radius: clamp(128px, 28vw, 210px);
+  }
+
+  .centerBadge {
+    width: clamp(150px, 34vw, 250px);
+    height: clamp(150px, 34vw, 250px);
+  }
+
+  .nodeIconBox {
+    width: clamp(56px, 13vw, 80px);
+    height: clamp(56px, 13vw, 80px);
+  }
+
+  .nodeIcon {
+    width: clamp(26px, 6vw, 36px);
+    height: clamp(26px, 6vw, 36px);
+  }
+
+  .nodeLabel {
+    font-size: var(--cm-fs-sm);
+  }
+}
+
+@media (max-width: 420px) {
+  .orbitWrap {
+    max-width: 320px;
+    --radius: clamp(98px, 35vw, 145px);
+  }
+
+  .centerBadge {
+    width: clamp(115px, 36vw, 165px);
+    height: clamp(115px, 36vw, 165px);
+  }
+
+  .nodeIconBox {
+    width: clamp(48px, 14vw, 62px);
+    height: clamp(48px, 14vw, 62px);
+  }
+
+  .nodeIcon {
+    width: clamp(22px, 6.5vw, 28px);
+    height: clamp(22px, 6.5vw, 28px);
+  }
+
+  .nodeLabel {
+    font-size: var(--cm-fs-2xs);
+  }
+
+  .detailBubble {
+    width: min(240px, 92%);
+    padding: .85em 1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node {
+    transition: none;
+  }
+}

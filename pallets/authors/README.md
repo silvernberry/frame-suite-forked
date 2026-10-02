@@ -1,5 +1,12 @@
 # Pallet Authors
 
+[![Homepage](https://img.shields.io/badge/Homepage-Visit_Site-2563EB?style=flat-square&logo=rocket&logoColor=white)](https://auguth.github.io/frame-suite/pallet-authors/)
+[![Docs Site](https://img.shields.io/badge/Docs-Read_the_Docs-16A34A?style=flat-square&logo=readthedocs&logoColor=white)](https://auguth.github.io/frame-suite/pallet-authors/docs/)
+[![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-F59E0B?style=flat-square&logo=opensourceinitiative&logoColor=white)](https://opensource.org/license/MPL-2.0)
+[![Crates.io](https://img.shields.io/crates/v/pallet-authors?style=flat-square&color=F97316)](https://crates.io/crates/pallet-authors)
+[![Docs.rs](https://img.shields.io/badge/Docs-docs.rs-7C3AED?style=flat-square&logo=docsdotrs&logoColor=white)](https://docs.rs/pallet-authors)
+[![Substrate Framework](https://img.shields.io/badge/Substrate-Framework-E6007A?style=flat-square&logo=polkadot&logoColor=white)](https://github.com/paritytech/polkadot-sdk)
+
 An economically-backed **role system** for runtimes that need active participants such as validators, operators, or contributors.
 
 Authors are actors who commit collateral, can receive backing, and participate in selection processes.

@@ -99,7 +99,7 @@ function HomeNavbar() {
             </a>
           </li>
           <li>
-            <a href="https://docs.rs/pallet-xp/0.1.1/src/pallet_xp/lib.rs.html#16-2537" className={styles.navLink} target="_blank" rel="noopener noreferrer">
+            <a href="https://docs.rs/pallet-xp/latest/src/pallet_xp/lib.rs.html#16-2537" className={styles.navLink} target="_blank" rel="noopener noreferrer">
               <svg className={styles.navIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
@@ -179,7 +179,7 @@ function HomeNavbar() {
           Crates
         </a>
 
-        <a href="https://docs.rs/pallet-xp/0.1.1/src/pallet_xp/lib.rs.html#16-2537" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+        <a href="https://docs.rs/pallet-xp/latest/src/pallet_xp/lib.rs.html#16-2537" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
           <svg className={styles.mobileLinkIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="16 18 22 12 16 6"/>
             <polyline points="8 6 2 12 8 18"/>

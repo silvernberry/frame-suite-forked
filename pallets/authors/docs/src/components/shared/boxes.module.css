@@ -1,0 +1,244 @@
+/* SHARED BOX PRIMITIVES */
+
+.card {
+  background: var(--pa-white);
+  border: 1px solid var(--pa-border);
+  border-radius: var(--pa-radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--pa-shadow-sm);
+}
+
+.callout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--pa-bg2);
+  border: 1px solid var(--pa-border);
+  border-radius: var(--pa-radius-sm);
+  padding: var(--space-4) var(--space-5);
+}
+
+.calloutIcon {
+  flex-shrink: 0;
+  width: var(--pa-badge-sm);
+  height: var(--pa-badge-sm);
+  color: var(--pa-trust);
+}
+
+.calloutText {
+  font-size: var(--font-desc-sm);
+  color: var(--pa-ink);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.calloutText b {
+  color: var(--pa-trust);
+}
+
+.factItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.factItemRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.factIcon {
+  flex-shrink: 0;
+  width: var(--pa-badge-md);
+  height: var(--pa-badge-md);
+  border-radius: 9px;
+  background: var(--pa-trust);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.factIcon svg {
+  width: 50%;
+  height: 50%;
+}
+
+.factTitle {
+  font-family: var(--pa-font-head);
+  font-weight: 700;
+  font-size: var(--font-desc-sm);
+  color: var(--pa-ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.factDesc {
+  font-family: var(--pa-font-body);
+  font-size: var(--font-desc-xs);
+  color: var(--pa-slate);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.stepRow {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--pa-border);
+  position: relative;
+}
+
+.stepRow:first-child {
+  border-top: none;
+}
+
+.stepNum {
+  flex-shrink: 0;
+  width: var(--pa-badge-sm);
+  height: var(--pa-badge-sm);
+  border-radius: 50%;
+  background: var(--pa-bg3);
+  color: var(--pa-trust);
+  font-family: var(--pa-font-mono);
+  font-weight: 700;
+  font-size: var(--font-card-badge);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.stepTitle {
+  font-family: var(--pa-font-head);
+  font-weight: 700;
+  font-size: var(--font-card-title);
+  color: var(--pa-ink);
+  margin: 0 0 4px;
+}
+
+.stepDesc {
+  font-family: var(--pa-font-body);
+  font-size: var(--font-desc-sm);
+  color: var(--pa-slate);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.highlightPanel {
+  border-radius: var(--pa-radius-lg);
+  padding: var(--space-8);
+  color: var(--pa-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.highlightPanel h3 {
+  font-family: var(--pa-font-head);
+  font-weight: 800;
+  font-size: var(--font-title-sm);
+  color: var(--pa-white);
+  line-height: 1.25;
+  margin: 0 0 var(--space-3);
+}
+
+.highlightPanel p {
+  font-family: var(--pa-font-body);
+  font-size: var(--font-desc-md);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 var(--space-5);
+}
+
+.iconBadge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--pa-trust);
+}
+
+.badgeSm {
+  width: var(--pa-badge-sm);
+  height: var(--pa-badge-sm);
+  border-radius: 8px;
+}
+
+.badgeMd {
+  width: var(--pa-badge-md);
+  height: var(--pa-badge-md);
+  border-radius: 10px;
+}
+
+.badgeLg {
+  width: var(--pa-badge-lg);
+  height: var(--pa-badge-lg);
+  border-radius: 11px;
+}
+
+.mascotWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.mascot {
+  position: relative;
+  max-width: 350px;
+  max-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascot::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  background: var(--pa-mascot-glow);
+  filter: blur(6px);
+}
+
+.mascot img {
+  max-width: 325px;
+  height: auto;
+  filter: var(--pa-mascot-shadow);
+}
+
+@media (max-width: 899px) {
+  .mascot img {
+    max-width: 280px;
+    height: auto;
+  }
+}
+
+@media (max-width: 799px) {
+  .mascot img {
+    max-width: 240px;
+    height: auto;
+  }
+}
+
+@media (max-width: 699px) {
+  .mascot img {
+    max-width: 200px;
+    height: auto;
+  }
+}
+
+@media (max-width: 559.98px) {
+  .mascot {
+    max-width: 280px;
+    max-height: 280px;
+  }
+  .mascot img {
+    max-width: 280px;
+  }
+}

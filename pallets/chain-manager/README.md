@@ -1,5 +1,12 @@
 # Pallet Chain Manager
 
+[![Homepage](https://img.shields.io/badge/Homepage-Visit_Site-2563EB?style=flat-square&logo=rocket&logoColor=white)](https://auguth.github.io/frame-suite/pallet-chain-manager/)
+[![Docs Site](https://img.shields.io/badge/Docs-Read_the_Docs-16A34A?style=flat-square&logo=readthedocs&logoColor=white)](https://auguth.github.io/frame-suite/pallet-chain-manager/docs/)
+[![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-F59E0B?style=flat-square&logo=opensourceinitiative&logoColor=white)](https://opensource.org/license/MPL-2.0)
+[![Crates.io](https://img.shields.io/crates/v/pallet-chain-manager?style=flat-square&color=F97316)](https://crates.io/crates/pallet-chain-manager)
+[![Docs.rs](https://img.shields.io/badge/Docs-docs.rs-7C3AED?style=flat-square&logo=docsdotrs&logoColor=white)](https://docs.rs/pallet-chain-manager)
+[![Substrate Framework](https://img.shields.io/badge/Substrate-Framework-E6007A?style=flat-square&logo=polkadot&logoColor=white)](https://github.com/paritytech/polkadot-sdk)
+
 A runtime module for coordinating **validator (author) selection and session participation**.
 
 This pallet connects **roles (author abstractions)**, elections, and sessions into a working validator system, handling **validator selection, activation, and settlement** across sessions.

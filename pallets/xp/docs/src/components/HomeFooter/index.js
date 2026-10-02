@@ -9,7 +9,7 @@ const links = [
   { label: 'Github',   href: 'https://github.com/auguth/' },
   { label: 'Docs',   to: '/docs/intro', internal: true },
   { label: 'Crates', href: 'https://crates.io/crates/pallet-xp' },
-  { label: 'Source', href: 'https://docs.rs/pallet-xp/0.1.1/src/pallet_xp/lib.rs.html#16-2537' },
+  { label: 'Source', href: 'https://docs.rs/pallet-xp/latest/src/pallet_xp/lib.rs.html#16-2537' },
   { label: 'Template', href: 'https://github.com/auguth/xp-substrate-template' },
 ];
 
@@ -120,7 +120,7 @@ export default function HomeFooter() {
               rel="noopener noreferrer"
               >
                 <LicLogo />
-                Mozila Public Licence 2.0
+                mozilla Public Licence 2.0
               </a>
             </div>
             <div className={styles.innerVsep} />
@@ -152,7 +152,7 @@ export default function HomeFooter() {
             rel="noopener noreferrer"
             >
               <LicLogo />
-              Mozila Public Licence 2.0
+              mozilla Public Licence 2.0
             </a>
           </div>
           <div className={styles.hdivider} />
@@ -180,7 +180,7 @@ export default function HomeFooter() {
           rel="noopener noreferrer"
           >
             <LicLogo />
-            Mozila Public Licence 2.0
+            mozilla Public Licence 2.0
           </a>
           <div className={styles.hdivider} />
           <LinksBlock />

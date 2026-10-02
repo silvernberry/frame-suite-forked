@@ -1,0 +1,141 @@
+/* Section - BridgeStrip */
+
+.section {
+  font-family: var(--pa-font-body);
+  background: var(--pa-bg2);
+  color: var(--pa-ink);
+  padding: 44px clamp(1.25rem, 5vw, 80px);
+  border-top: 1px solid var(--pa-border);
+  border-bottom: 1px solid var(--pa-border);
+}
+
+.inner {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.taglineBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.tagline {
+  font-family: var(--pa-font-head);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--pa-trust);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sub {
+  font-family: var(--pa-font-body);
+  font-size: var(--fs-quote-sm);
+  color: var(--pa-slate);
+  font-style: italic;
+  margin: 0;
+}
+
+.marqueeWrapper {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: var(--space-2);
+  width: max-content;
+  animation: bridgeMarquee 28s linear infinite;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+  }
+}
+
+@keyframes bridgeMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--pa-font-body);
+  font-size: var(--font-desc-xs);
+  font-weight: 600;
+  color: var(--pa-slate);
+  border: 1px solid var(--pa-border);
+  background: var(--pa-white);
+  border-radius: 999px;
+  padding: 9px 20px;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.pill:hover {
+  border-color: var(--pa-border-em);
+  color: var(--pa-trust);
+  background: var(--pa-bg3);
+}
+
+.pillIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  color: var(--pa-trust);
+  transition: color 0.2s;
+}
+
+.pillIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Breakpoints */
+
+@media (max-width: 899.98px) {
+  .section {
+    padding: 36px 20px;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+}

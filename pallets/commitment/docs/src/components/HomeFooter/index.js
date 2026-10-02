@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 const logoMark  = require('@site/static/img/favicon-v1.png').default;
-const auguthImg = require('@site/static/img/assets/parent_logo_v2.png').default;
+const auguthImg = require('@site/static/img/parent_logo_v2.png').default;
 
 const links = [
   { label: 'Github',   href: 'https://github.com/auguth/' },
@@ -120,7 +120,7 @@ export default function HomeFooter() {
               rel="noopener noreferrer"
               >
                 <LicLogo />
-                Mozila Public Licence 2.0
+                mozilla Public Licence 2.0
               </a>
             </div>
             <div className={styles.innerVsep} />
@@ -152,7 +152,7 @@ export default function HomeFooter() {
             rel="noopener noreferrer"
             >
               <LicLogo />
-              Mozila Public Licence 2.0
+              mozilla Public Licence 2.0
             </a>
           </div>
           <div className={styles.hdivider} />
@@ -180,7 +180,7 @@ export default function HomeFooter() {
           rel="noopener noreferrer"
           >
             <LicLogo />
-            Mozila Public Licence 2.0
+            mozilla Public Licence 2.0
           </a>
           <div className={styles.hdivider} />
           <LinksBlock />

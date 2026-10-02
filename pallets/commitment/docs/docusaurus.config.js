@@ -67,6 +67,10 @@ const config = {
       disableSwitch: true,
       respectPrefersColorScheme: false,
     },
+    prism: {
+      theme: prismThemes.githubDark,
+      darkTheme: prismThemes.githubDark,
+    },
     mermaid: {
       theme: {
         light: 'dark',

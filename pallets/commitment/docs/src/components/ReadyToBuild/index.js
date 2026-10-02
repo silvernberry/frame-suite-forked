@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
 
-const mascotImg = require('@site/static/img/assets/ready-to-build.png').default;
+const mascotImg = require('@site/static/img/ready-to-build.png').default;
 
 const Kw = ({ children }) => (
   <code className={styles.kw}>{children}</code>
@@ -153,9 +153,9 @@ const CtaCardContent = () => (
       </div> */}
     </div>
 
-    <div className={styles.ctaHr} />
+    {/* <div className={styles.ctaHr} /> */}
 
-    <div className={styles.sdkBadges}>
+    {/* <div className={styles.sdkBadges}>
       <a
         href="https://github.com/paritytech/polkadot-sdk"
         className={styles.sdkBadge}
@@ -173,7 +173,7 @@ const CtaCardContent = () => (
       >
         Built with Substrate &amp; FRAME
       </a>
-    </div>
+    </div> */}
   </>
 );
 

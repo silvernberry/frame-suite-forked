@@ -57,7 +57,7 @@ export default function HeroSection() {
               Read Docs
             </Link>
           </div>
-          <a
+          {/* <a
             href="https://github.com/paritytech/polkadot-sdk"
             className={styles.attrBadge}
             target="_blank"
@@ -69,7 +69,7 @@ export default function HeroSection() {
             Substrate
             <span className={styles.attrDivider} />
             FRAME
-          </a>
+          </a> */}
         </div>
 
         <div className={styles.imageWrapper}>

@@ -1,0 +1,317 @@
+/* Section - HeroSection */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px clamp(1.25rem, 4vw, 4rem) 50px;
+  overflow: hidden;
+  background: var(--hero-bg-prm);
+}
+
+.intro {
+  max-width: var(--res-max-width);
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 4vw, 5rem);
+  padding: clamp(2rem, 5vw, 5rem) 0;
+  z-index: 2;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px 8px 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--pa-bg3), var(--pa-bg3)) padding-box,
+    var(--text-color-gradient) border-box;
+  font-family: var(--pa-font-head);
+  font-size: var(--fs-hero-eye);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--pa-trust-deep);
+  margin: 0 0 var(--space-4);
+  opacity: 0;
+  animation: heroFadeUp 0.7s 0.1s ease forwards;
+}
+
+.eyebrowIcon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--text-color-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyebrowIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.headline {
+  font-family: var(--pa-font-head);
+  font-weight: 800;
+  font-size: var(--font-title-xl);
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  color: var(--pa-ink);
+  margin: 0 0 var(--space-4);
+  opacity: 0;
+  animation: heroFadeUp 0.7s 0.25s ease forwards;
+}
+
+.accent {
+  background: var(--text-color-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.subtitle {
+  font-family: var(--pa-font-body);
+  font-size: var(--fs-hero-des);
+  line-height: 1.7;
+  color: var(--pa-slate);
+  max-width: 560px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: heroFadeUp 0.7s 0.4s ease forwards;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: clamp(24px, 4vw, 32px);
+  opacity: 0;
+  animation: heroFadeUp 0.7s 0.48s ease forwards;
+}
+
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  font-family: var(--pa-font-head);
+  font-weight: 700;
+  font-size: var(--font-btn-md);
+  padding: 13px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.btnPrimary {
+  background: var(--pa-trust-deep);
+  color: #fff;
+  border: 1.5px solid var(--pa-trust-deep);
+  box-shadow: var(--button-shadows);
+}
+
+.btnPrimary:hover {
+  background: var(--pa-trust);
+  border-color: var(--pa-trust);
+  transform: translateY(-1px);
+  box-shadow: var(--button-hover-shadows);
+  text-decoration: none;
+  color: #fff;
+}
+
+.btnSecondary {
+  background: var(--pa-white);
+  color: var(--pa-trust-deep);
+  border: 1.5px solid var(--pa-trust-deep);
+}
+
+.btnSecondary:hover {
+  background: var(--pa-bg3);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: var(--pa-trust-deep);
+}
+
+.btnPrimary svg,
+.btnSecondary svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.diagram {
+  max-width: var(--res-max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: "card1 mascot card2";
+  align-items: center;
+  gap: var(--space-6);
+  opacity: 0;
+  animation: heroFadeUp 0.7s 0.6s ease forwards;
+}
+
+.card:first-child {
+  grid-area: card1;
+}
+
+.card:last-child {
+  grid-area: card2;
+}
+
+.card {
+  background: var(--pa-glass-bg);
+  backdrop-filter: var(--pa-glass-blur);
+  -webkit-backdrop-filter: var(--pa-glass-blur);
+  border: 1px solid var(--pa-glass-border);
+  border-radius: var(--pa-radius-sm);
+  padding: 22px 24px 26px;
+  box-shadow: var(--pa-glass-shadow);
+}
+
+.columnHeading {
+  font-family: var(--pa-font-head);
+  font-size: var(--font-card-badge);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pa-trust);
+  margin: 0 0 var(--space-4);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--pa-font-body);
+  font-size: var(--font-card-des);
+  color: var(--pa-ink);
+}
+
+.check,
+.iconChip {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--pa-trust);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check svg {
+  width: 11px;
+  height: 11px;
+}
+
+.iconChip svg {
+  width: 13px;
+  height: 13px;
+}
+
+.andMore {
+  font-family: var(--pa-font-body);
+  font-size: var(--font-card-des);
+  color: var(--pa-ink);
+  margin: var(--space-3) 0 0;
+}
+
+.mascotSlot {
+  grid-area: mascot;
+  border-radius: var(--pa-radius-sm);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascotImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+/* Breakpoints */
+
+@media (max-width: 1150px) {
+  .diagram {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "mascot mascot"
+      "card1 card2";
+    align-items: stretch;
+  }
+
+  .mascotSlot {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+@media (max-width: 559.98px) {
+  .diagram {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "mascot"
+      "card1"
+      "card2";
+  }
+
+  .mascotSlot {
+    aspect-ratio: 16 / 9;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    font-size: 13px;
+    padding: 12px 20px;
+  }
+}

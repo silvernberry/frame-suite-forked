@@ -181,6 +181,9 @@
   gap: 10px;
 }
 
+.markdown p, li{
+  font-size: large;
+}
 
 .table-of-contents__link {
   font-size: medium;

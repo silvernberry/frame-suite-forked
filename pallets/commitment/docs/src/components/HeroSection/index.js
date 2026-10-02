@@ -70,7 +70,7 @@ export default function Hero() {
           </Link>
         </div>
 
-          <a
+          {/* <a
             href="https://github.com/paritytech/polkadot-sdk"
             className={styles.attrBadge}
             target="_blank"
@@ -82,7 +82,7 @@ export default function Hero() {
             Substrate
             <span className={styles.attrDivider} />
             FRAME
-          </a>
+          </a> */}
       </div>
     </header>
   );
