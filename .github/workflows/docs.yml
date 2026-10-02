@@ -2,9 +2,9 @@ name: Docs
 
 on:
   push:
-    branches: [master]
+    branches: [site-rework]
   pull_request:
-    branches: [master]
+    branches: [site-rework]
   workflow_dispatch:
 
 concurrency:
@@ -158,7 +158,7 @@ jobs:
           EOF
 
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/site-rework'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

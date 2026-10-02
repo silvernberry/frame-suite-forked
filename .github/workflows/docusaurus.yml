@@ -3,36 +3,31 @@ name: Docusaurus site
 on:
   push:
     branches: [site-rework]
-    paths: &doc_paths
+    paths:
       - 'pallets/xp/docs/**'
       - 'pallets/commitment/docs/**'
       - 'pallets/authors/docs/**'
       - 'pallets/chain-manager/docs/**'
   pull_request:
     branches: [site-rework]
-    paths: *doc_paths
+    paths:
+      - 'pallets/xp/docs/**'
+      - 'pallets/commitment/docs/**'
+      - 'pallets/authors/docs/**'
+      - 'pallets/chain-manager/docs/**'
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build ${{ matrix.name }} docs
+  build-and-deploy-xp:
+    name: Build & Deploy Pallet-Xp Docs
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - { name: pallet-xp,            dir: pallets/xp/docs }
-          - { name: pallet-commitment,    dir: pallets/commitment/docs }
-          - { name: pallet-authors,       dir: pallets/authors/docs }
-          - { name: pallet-chain-manager, dir: pallets/chain-manager/docs }
+
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -41,46 +36,127 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: ${{ matrix.dir }}/package-lock.json
 
       - name: Install dependencies
-        working-directory: ${{ matrix.dir }}
-        run: npm ci
+        working-directory: pallets/xp/docs
+        run: npm install
 
       - name: Build Docusaurus
-        working-directory: ${{ matrix.dir }}
+        working-directory: pallets/xp/docs
         run: npm run build
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/authors-doc'
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: ${{ matrix.name }}  
-          path: ${{ matrix.dir }}/build
-          if-no-files-found: error
-          retention-days: 1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: pallets/xp/docs/build
+          destination_dir: pallet-xp/
+          publish_branch: gh-pages
+          force_orphan: false
+          keep_files: true
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/site-rework'
+  build-and-deploy-commitment:
+    name: Build & Deploy Pallet-Commitment Docs
+    needs: build-and-deploy-xp
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+
     permissions:
       contents: write
 
     steps:
-      - name: Download all site builds
-        uses: actions/download-artifact@v4
-        with:
-          pattern: pallet-*
-          path: site   
+      - uses: actions/checkout@v4
 
-      - name: Deploy to gh-pages
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: pallets/commitment/docs
+        run: npm install
+
+      - name: Build Docusaurus
+        working-directory: pallets/commitment/docs
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/authors-doc'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: site
+          publish_dir: pallets/commitment/docs/build
+          destination_dir: pallet-commitment/
           publish_branch: gh-pages
-          keep_files: true
           force_orphan: false
+          keep_files: true
+
+  build-and-deploy-authors:
+    name: Build & Deploy Pallet-Authors Docs
+    needs: build-and-deploy-commitment
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: pallets/authors/docs
+        run: npm install
+
+      - name: Build Docusaurus
+        working-directory: pallets/authors/docs
+        run: npm run build
+        
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/authors-doc'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: pallets/authors/docs/build
+          destination_dir: pallet-authors/
+          publish_branch: gh-pages
+          force_orphan: false
+          keep_files: true
+
+  build-and-deploy-cm:
+    name: Build & Deploy Pallet-CM Docs
+    needs: build-and-deploy-authors
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: pallets/chain-manager/docs
+        run: npm install
+
+      - name: Build Docusaurus
+        working-directory: pallets/chain-manager/docs
+        run: npm run build
+        
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/site-rework'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: pallets/chain-manager/docs/build
+          destination_dir: pallet-chain-manager/
+          publish_branch: gh-pages
+          force_orphan: false
+          keep_files: true
